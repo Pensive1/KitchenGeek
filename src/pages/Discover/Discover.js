@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail";
 
-import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
+// import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
 
 const baseURL = "https://api.spoonacular.com";
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -11,37 +11,35 @@ const config = {
 };
 
 const Discover = () => {
-  const [recipes, setRecipes] = useState(null);
+  const [recipeData, setRecipeData] = useState(null);
 
   useEffect(() => {
-    // const recipies = getRandomRecipes();
+    const getRandomRecipes = async () => {
+      const randomRecipeUrl = `${baseURL}/recipes/random?number=2`;
 
-    // const getRandomRecipes = async () => {
-    //   const randomRecipeUrl = `${baseURL}/recipes/random?number=3`;
+      try {
+        const { data } = await axios.get(randomRecipeUrl, config);
+        const { recipes } = data;
+        setRecipeData(recipes);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-    //   try {
-    //     const { data } = await axios.get(randomRecipeUrl, config);
-    //     console.log(data);
-
-    //     setRecipes(data);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
-
-    // getRandomRecipes();
-
-    // setRecipes(getRandomRecipes());
-    console.log(recipes);
-    console.log(getRandomRecipes());
+    getRandomRecipes();
   }, []);
+
+  if (!recipeData) {
+    return <p>Loading recipes...</p>;
+  }
 
   return (
     <>
       <h1>Discover Page</h1>
-      <Link to="/recipe">
-        <p>Sample recipe</p>
-      </Link>
+
+      {recipeData.map((recipe) => {
+        return <RecipeThumbnail recipe={recipe} key={recipe.id} />;
+      })}
     </>
   );
 };
