@@ -1,32 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail";
-
-// import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
-
-const baseURL = "https://api.spoonacular.com";
-const API_KEY = process.env.REACT_APP_API_KEY;
-const config = {
-  headers: { "x-api-key": API_KEY },
-};
+import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
 
 const Discover = () => {
   const [recipeData, setRecipeData] = useState(null);
 
+  //Run module function in a local async function
+  const getRecipes = async () => {
+    const recipes = await getRandomRecipes();
+    setRecipeData(recipes);
+  };
+
   useEffect(() => {
-    const getRandomRecipes = async () => {
-      const randomRecipeUrl = `${baseURL}/recipes/random?number=2`;
-
-      try {
-        const { data } = await axios.get(randomRecipeUrl, config);
-        const { recipes } = data;
-        setRecipeData(recipes);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    getRandomRecipes();
+    // MODULE FUNCTION CALL
+    getRecipes();
   }, []);
 
   if (!recipeData) {

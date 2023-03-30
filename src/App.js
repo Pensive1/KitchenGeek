@@ -10,16 +10,14 @@ import NavBar from "./components/NavBar/NavBar";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Discover />} />
-          <Route path="/cookbook" element={<Cookbook />} />
-          <Route path="/results" element={<SearchResults />} />
-          <Route path="/recipe" element={<RecipeDetails />} />
-          <Route path="/shopping" element={<ShoppingList />} />
-        </Routes>
-        <NavBar />
-      </div>
+      <Routes>
+        <Route path="/" element={<Discover />} />
+        <Route path="/cookbook" element={<Cookbook />} />
+        <Route path="/results" element={<SearchResults />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/shopping" element={<ShoppingList />} />
+      </Routes>
+      <NavBar />
     </BrowserRouter>
   );
 }

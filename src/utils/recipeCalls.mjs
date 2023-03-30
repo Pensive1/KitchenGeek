@@ -8,13 +8,14 @@ const config = {
 
 // Get random recipes
 export const getRandomRecipes = async () => {
-  const randomRecipeUrl = `${baseURL}/recipes/random?number=3`;
+  const randomRecipeUrl = `${baseURL}/recipes/random?number=2`;
 
   try {
     //return the api call
     const { data } = await axios.get(randomRecipeUrl, config);
-    // console.log(data);
-    return data;
+    const { recipes } = data;
+    console.log(recipes);
+    return recipes;
   } catch (err) {
     console.log(err);
   }
