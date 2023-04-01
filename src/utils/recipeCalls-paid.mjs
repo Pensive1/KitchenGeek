@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const baseURL = "https://api.spoonacular.com";
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_RAPID_API_KEY;
+const API_HOST = process.env.REACT_APP_RAPID_API_HOST;
+const baseURL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const config = {
-  headers: { "x-api-key": API_KEY },
+  headers: { "X-RapidAPI-Key": API_KEY, "X-RapidAPI-Host": API_HOST },
 };
 
 // Get random recipes
@@ -36,7 +37,7 @@ export const searchRecipesByName = async (recipeName) => {
 
 //Get recipe by cuisine
 export const searchRecipesByCuisine = async (cuisine) => {
-  const recipeCuisineUrl = `${baseURL}/recipes/complexSearch?cuisine=${cuisine}`;
+  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex?cuisine=${cuisine}`;
 
   try {
     //return the api call

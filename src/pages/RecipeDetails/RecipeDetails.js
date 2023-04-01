@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getRecipeDetails } from "../../utils/recipeCalls.mjs";
+import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
-  console.log(id);
   const [recipeDetails, setRecipeDetails] = useState(null);
 
   const loadRecipeDetails = async () => {
@@ -19,6 +18,7 @@ const RecipeDetails = () => {
   if (!recipeDetails) {
     return <p>Loading recipe details</p>;
   }
+
   return (
     <>
       <h1>Recipe Details</h1>
@@ -30,16 +30,12 @@ const RecipeDetails = () => {
       <section>
         <h4>Ingredients</h4>
         <ul>
-          {recipeDetails.extendedIngredients.map((ingredient) => {
-            const ingId = Number(
-              recipeDetails.extendedIngredients.id
-            ).toString();
-
+          {recipeDetails.extendedIngredients.map((ingredient, index) => {
             return (
-              <li key={ingId}>
+              <li key={index}>
                 {ingredient.amount < 1
-                  ? ingredient.amount.toFixed(2)
-                  : ingredient.amount}{" "}
+                  ? `${ingredient.amount.toFixed(2)} `
+                  : `${ingredient.amount} `}
                 {ingredient.unit ? `${ingredient.unit} of ` : ""}
                 {ingredient.name}
               </li>
