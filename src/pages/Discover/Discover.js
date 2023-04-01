@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail";
+import RecipeList from "../../components/RecipeList/RecipeList.js";
 import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
 
 const Discover = () => {
@@ -23,10 +23,7 @@ const Discover = () => {
   return (
     <>
       <h1>Discover Page</h1>
-
-      {recipeData.map((recipe) => {
-        return <RecipeThumbnail recipe={recipe} key={recipe.id} />;
-      })}
+      <RecipeList recipes={recipeData} />
     </>
   );
 };

@@ -14,7 +14,6 @@ export const getRandomRecipes = async () => {
     //return the api call
     const { data } = await axios.get(randomRecipeUrl, config);
     const { recipes } = data;
-    console.log(recipes);
     return recipes;
   } catch (err) {
     console.log(err);
@@ -71,7 +70,7 @@ export const getRecipeDetails = async (id) => {
   try {
     //return the api call
     const { data } = await axios.get(recipeUrl, config);
-    // console.log(data);
+    console.log(data);
     return data;
   } catch (err) {
     console.log(err);
