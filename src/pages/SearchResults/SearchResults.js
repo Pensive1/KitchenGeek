@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { searchRecipesByName } from "../../utils/recipeCalls-paid.mjs";
 import { useEffect, useState } from "react";
-import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail.js";
+import RecipeList from "../../components/RecipeList/RecipeList.js";
 
 const SearchResults = () => {
   const { searchQuery } = useParams("/:searchQuery");
   const [searchResults, setSearchResults] = useState(null);
 
   const getResults = async () => {
-    const { results } = await searchRecipesByName(searchQuery);
+    const results = await searchRecipesByName(searchQuery);
     setSearchResults(results);
   };
 
@@ -27,9 +27,7 @@ const SearchResults = () => {
   return (
     <>
       <h1>Search Results</h1>
-      {searchResults.map((recipe, index) => {
-        return <RecipeThumbnail key={index} recipe={recipe} />;
-      })}
+      <RecipeList recipes={searchResults.results} />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
+import RecipeInstructions from "../../components/RecipeInstructions/RecipeInstructions.js";
+import IngredientList from "../../components/IngredientList/IngredientList.js";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
@@ -27,22 +29,8 @@ const RecipeDetails = () => {
 
       <img src={recipeDetails.image} alt={recipeDetails.title} />
 
-      <section>
-        <h4>Ingredients</h4>
-        <ul>
-          {recipeDetails.extendedIngredients.map((ingredient, index) => {
-            return (
-              <li key={index}>
-                {ingredient.amount < 1
-                  ? `${ingredient.amount.toFixed(2)} `
-                  : `${ingredient.amount} `}
-                {ingredient.unit ? `${ingredient.unit} of ` : ""}
-                {ingredient.name}
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      <IngredientList ingredients={recipeDetails.extendedIngredients} />
+      <RecipeInstructions steps={recipeDetails.analyzedInstructions[0].steps} />
       <div>
         <h5>Servings: {recipeDetails.servings}</h5>
       </div>
