@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
+import Searchbar from "../../components/SearchBar/Searchbar.js";
 
 const Discover = () => {
   const [recipeData, setRecipeData] = useState(null);
@@ -23,6 +24,7 @@ const Discover = () => {
   return (
     <>
       <h1>Discover Page</h1>
+      <Searchbar />
       <RecipeList recipes={recipeData} />
     </>
   );

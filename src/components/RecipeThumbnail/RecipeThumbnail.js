@@ -3,7 +3,7 @@ import "./RecipeThumbnail.scss";
 
 const RecipeThumbnail = ({ recipe }) => {
   return (
-    <Link to={`recipe/${recipe.id}`}>
+    <Link to={`/recipe/${recipe.id}`}>
       <article>
         <img src={recipe.image} alt={recipe.title} />
         <p>{recipe.title}</p>

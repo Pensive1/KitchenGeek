@@ -28,7 +28,6 @@ export const searchRecipesByName = async (recipeName) => {
   try {
     //return the api call
     const { data } = await axios.get(recipeSearchUrl, config);
-    // console.log(data);
     return data;
   } catch (err) {
     console.log(err);
