@@ -29,7 +29,10 @@ const RecipeDetails = () => {
 
       <img src={recipeDetails.image} alt={recipeDetails.title} />
 
-      <IngredientList ingredients={recipeDetails.extendedIngredients} />
+      <IngredientList
+        ingredients={recipeDetails.extendedIngredients}
+        servings={recipeDetails.servings}
+      />
       <RecipeInstructions steps={recipeDetails.analyzedInstructions[0].steps} />
       <div>
         <h5>Servings: {recipeDetails.servings}</h5>
