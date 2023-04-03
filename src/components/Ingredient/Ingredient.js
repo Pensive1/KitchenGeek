@@ -1,18 +1,18 @@
 import { calcIngredientPortion } from "../../utils/calcs.js";
 const Ingredient = ({ ingredient, origServing, newServing }) => {
   const ingAmount = ingredient.amount;
-  const ingredientPortion = calcIngredientPortion(
-    origServing,
-    ingAmount,
-    newServing
-  );
+  const ingredientPortion =
+    Math.round(calcIngredientPortion(origServing, ingAmount, newServing) * 4) /
+    4;
 
   return (
     <li>
-      {ingredientPortion < 1
-        ? `${ingredientPortion.toFixed(2)} `
-        : `${ingredientPortion} `}
-      {ingredient.unit ? `${ingredient.unit} of ` : ""}
+      <span>
+        {ingredientPortion < 1
+          ? `${ingredientPortion.toFixed(2)} `
+          : `${ingredientPortion} `}
+        {ingredient.unit ? `${ingredient.unit} of ` : ""}
+      </span>
       {ingredient.name}
     </li>
   );

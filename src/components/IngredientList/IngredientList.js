@@ -11,6 +11,7 @@ const IngredientList = ({ ingredients, servings }) => {
 
   const updatePortion = (e, amount) => {
     e.preventDefault();
+    //Dont make the counter reach 0
     setIngServing(ingServing + amount);
   };
   return (
@@ -34,7 +35,8 @@ const IngredientList = ({ ingredients, servings }) => {
         <p>Servings</p>
         <button
           onClick={(e) => {
-            updatePortion(e, -1);
+            e.preventDefault();
+            if (ingServing !== 1) updatePortion(e, -1);
           }}
         >
           -
@@ -43,7 +45,7 @@ const IngredientList = ({ ingredients, servings }) => {
           type="number"
           name="RecipeServing"
           value={ingServing}
-          onChange={calcIngredients}
+          onChange={(e) => updatePortion(e, e.target.value)}
         />
         <button
           onClick={(e) => {
