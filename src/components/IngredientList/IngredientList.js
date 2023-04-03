@@ -5,15 +5,14 @@ import Ingredient from "../Ingredient/Ingredient.js";
 const IngredientList = ({ ingredients, servings }) => {
   const [ingServing, setIngServing] = useState(servings);
 
-  const calcIngredients = (e) => {
-    e.preventDefault();
+  const updatePortion = (amount) => {
+    setIngServing(Number(amount));
   };
 
-  const updatePortion = (e, amount) => {
-    e.preventDefault();
-    //Dont make the counter reach 0
-    setIngServing(ingServing + amount);
+  const updatePortionWithButtons = (amount) => {
+    setIngServing(Number(ingServing) + Number(amount));
   };
+
   return (
     <>
       <section>
@@ -31,12 +30,13 @@ const IngredientList = ({ ingredients, servings }) => {
           })}
         </ul>
       </section>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <p>Servings</p>
         <button
-          onClick={(e) => {
-            e.preventDefault();
-            if (ingServing !== 1) updatePortion(e, -1);
+          onClick={() => {
+            if (ingServing !== 1) {
+              updatePortionWithButtons(-1);
+            }
           }}
         >
           -
@@ -45,11 +45,11 @@ const IngredientList = ({ ingredients, servings }) => {
           type="number"
           name="RecipeServing"
           value={ingServing}
-          onChange={(e) => updatePortion(e, e.target.value)}
+          onChange={(e) => updatePortion(e.target.value)}
         />
         <button
-          onClick={(e) => {
-            updatePortion(e, +1);
+          onClick={() => {
+            updatePortionWithButtons(+1);
           }}
         >
           +
