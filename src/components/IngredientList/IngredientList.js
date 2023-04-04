@@ -54,6 +54,13 @@ const IngredientList = ({ ingredients, servings }) => {
         >
           +
         </button>
+        <button
+          onClick={() => {
+            setIngServing(servings);
+          }}
+        >
+          Reset
+        </button>
       </form>
     </>
   );

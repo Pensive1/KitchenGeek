@@ -1,9 +1,9 @@
-import { calcIngredientPortion } from "../../utils/calcs.js";
+import { calcIngredientPortion, roundDecimals } from "../../utils/calcs.js";
 const Ingredient = ({ ingredient, origServing, newServing }) => {
   const ingAmount = ingredient.amount;
-  const ingredientPortion =
-    Math.round(calcIngredientPortion(origServing, ingAmount, newServing) * 4) /
-    4;
+  const ingredientPortion = roundDecimals(
+    calcIngredientPortion(origServing, ingAmount, newServing)
+  );
 
   return (
     <li>

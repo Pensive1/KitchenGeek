@@ -17,26 +17,29 @@ const RecipeDetails = () => {
     loadRecipeDetails();
   }, []);
   // Loading State
-  if (!recipeDetails) {
-    return <p>Loading recipe details</p>;
-  }
+  // if (!recipeDetails) {
+  //   return <p>Loading recipe details</p>;
+  // }
 
   return (
     <>
       <h1>Recipe Details</h1>
-      <h3>{recipeDetails.title}</h3>
-      <p>By {recipeDetails.sourceName}</p>
-
-      <img src={recipeDetails.image} alt={recipeDetails.title} />
-
-      <IngredientList
-        ingredients={recipeDetails.extendedIngredients}
-        servings={recipeDetails.servings}
-      />
-      <RecipeInstructions steps={recipeDetails.analyzedInstructions[0].steps} />
-      <div>
-        <h5>Servings: {recipeDetails.servings}</h5>
-      </div>
+      {recipeDetails !== null ? (
+        <>
+          <h3>{recipeDetails.title}</h3>
+          <p>By {recipeDetails.sourceName}</p>
+          <img src={recipeDetails.image} alt={recipeDetails.title} />
+          <IngredientList
+            ingredients={recipeDetails.extendedIngredients}
+            servings={recipeDetails.servings}
+          />
+          <RecipeInstructions
+            steps={recipeDetails.analyzedInstructions[0].steps}
+          />
+        </>
+      ) : (
+        <p>Loading recipe details</p>
+      )}
     </>
   );
 };
