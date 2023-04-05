@@ -1,15 +1,19 @@
-import { calcIngredientPortion, roundDecimals } from "../../utils/calcs.js";
+import {
+  calcIngredientPortion,
+  roundDecimals,
+  parseAmount,
+} from "../../utils/calcs.js";
 const Ingredient = ({ ingredient, origServing, newServing }) => {
   const ingAmount = ingredient.amount;
-  const ingredientPortion = roundDecimals(
-    calcIngredientPortion(origServing, ingAmount, newServing)
+  const ingredientPortion = Number(
+    calcIngredientPortion(origServing, ingAmount, newServing).toPrecision(2)
   );
 
   return (
     <li>
       <span>
         {ingredientPortion < 1
-          ? `${ingredientPortion.toFixed(2)} `
+          ? `${parseAmount(ingredientPortion)} `
           : `${ingredientPortion} `}
         {ingredient.unit ? `${ingredient.unit} of ` : ""}
       </span>
