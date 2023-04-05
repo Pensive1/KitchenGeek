@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
 import RecipeInstructions from "../../components/RecipeInstructions/RecipeInstructions.js";
 import IngredientList from "../../components/IngredientList/IngredientList.js";
+import IcnBookmark from "../../components/Icons/IcnBookmark.js";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
   const [recipeDetails, setRecipeDetails] = useState(null);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const loadRecipeDetails = async () => {
     const details = await getRecipeDetails(id);
     setRecipeDetails(details);
+  };
+
+  const bookmarkRecipe = (e) => {
+    e.preventDefault();
+
+    if (isBookmarked) {
+      setIsBookmarked(false);
+    } else if (!isBookmarked) {
+      setIsBookmarked(true);
+    }
   };
 
   useEffect(() => {
@@ -29,6 +41,9 @@ const RecipeDetails = () => {
           <h3>{recipeDetails.title}</h3>
           <p>By {recipeDetails.sourceName}</p>
           <img src={recipeDetails.image} alt={recipeDetails.title} />
+          <Link onClick={bookmarkRecipe}>
+            <IcnBookmark isBookmarked={isBookmarked} />
+          </Link>
           <IngredientList
             ingredients={recipeDetails.extendedIngredients}
             servings={recipeDetails.servings}
