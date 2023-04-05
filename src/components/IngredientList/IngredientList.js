@@ -1,12 +1,26 @@
 import { useState } from "react";
 import "./IngredientList.scss";
 import Ingredient from "../Ingredient/Ingredient.js";
+import { Link } from "react-router-dom";
 
 const IngredientList = ({ ingredients, servings }) => {
   const [ingServing, setIngServing] = useState(servings);
+  const [unit, setUnit] = useState("metric");
 
   const updatePortion = (amount) => {
     setIngServing(Number(amount));
+  };
+
+  const updateUnit = (e) => {
+    e.preventDefault();
+    // console.log(e.target.innerText);
+    if (unit === "metric") {
+      e.target.innerText = "Imperial";
+      setUnit("us");
+    } else {
+      e.target.innerText = "Metric";
+      setUnit("metric");
+    }
   };
 
   const updatePortionWithButtons = (amount) => {
@@ -25,6 +39,7 @@ const IngredientList = ({ ingredients, servings }) => {
                 ingredient={ingredient}
                 origServing={servings}
                 newServing={ingServing}
+                unit={unit}
               />
             );
           })}
@@ -55,12 +70,14 @@ const IngredientList = ({ ingredients, servings }) => {
           +
         </button>
         <button
+          type="reset"
           onClick={() => {
             setIngServing(servings);
           }}
         >
           Reset
         </button>
+        <Link onClick={updateUnit}>Metric</Link>
       </form>
     </>
   );
