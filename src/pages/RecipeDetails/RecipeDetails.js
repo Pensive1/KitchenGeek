@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
-import { saveRecipe, removeRecipe } from "../../utils/usrActions.js";
+import {
+  saveRecipe,
+  removeRecipe,
+  checkBookmarks,
+} from "../../utils/usrActions.js";
 import RecipeInstructions from "../../components/RecipeInstructions/RecipeInstructions.js";
 import IngredientList from "../../components/IngredientList/IngredientList.js";
 import IcnBookmark from "../../components/Icons/IcnBookmark.js";
@@ -16,6 +20,20 @@ const RecipeDetails = () => {
     const details = await getRecipeDetails(id);
     setRecipeDetails(details);
   };
+
+  const bookmarkCheck = async () => {
+    const bmStatus = await checkBookmarks(id);
+    if (bmStatus) {
+      return setIsBookmarked(true);
+    } else {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    loadRecipeDetails();
+    bookmarkCheck();
+  }, []);
 
   const bookmarkRecipe = async (e) => {
     e.preventDefault();
@@ -43,10 +61,6 @@ const RecipeDetails = () => {
       }
     }
   };
-
-  useEffect(() => {
-    loadRecipeDetails();
-  }, []);
 
   return (
     <>

@@ -1,8 +1,4 @@
-import {
-  calcIngredientPortion,
-  roundDecimals,
-  parseAmount,
-} from "../../utils/calcs.js";
+import { calcIngredientPortion, parseAmount } from "../../utils/calcs.js";
 const Ingredient = ({ ingredient, origServing, newServing, unit }) => {
   const ingAmount = ingredient.measures[unit].amount;
   const ingUnit = ingredient.measures[unit].unitShort;
