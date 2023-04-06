@@ -4,14 +4,13 @@ const cookbookUrl = `${baseURL}/123/recipes`;
 
 // Check if recipe is bookmarked
 export const checkBookmarks = async (id) => {
-  let exist = null;
   const res = await axios.get(`${cookbookUrl}/${id}`);
 
   if (!res.data.error) {
-    return (exist = true);
+    return true;
   }
 
-  return (exist = false);
+  return false;
 };
 
 // Save recipe
@@ -33,4 +32,11 @@ export const removeRecipe = async (id) => {
 };
 
 // Get user recipes
-export const getBookmarked = async () => {};
+export const getBookmarked = async () => {
+  try {
+    const { data } = await axios.get(cookbookUrl);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
