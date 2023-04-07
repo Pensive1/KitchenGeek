@@ -7,12 +7,10 @@ import "./Searchbar.scss";
 const Searchbar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState(null);
-  // + queryParams in state
-
+  const [queryParams, setQueryParams] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const close = (e) => {
-    e.preventDefault();
+  const close = () => {
     setModalOpen(false);
   };
   const open = () => setModalOpen(true);
@@ -21,6 +19,7 @@ const Searchbar = () => {
     e.preventDefault();
     navigate(`/results/${query}`);
   };
+
   return (
     <form onSubmit={handleSearch} method="dialog">
       <input
@@ -31,7 +30,13 @@ const Searchbar = () => {
         }}
       />
       <Link onClick={() => (modalOpen ? close() : open())}>Filters</Link>
-      {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+      {modalOpen && (
+        <Modal
+          modalOpen={modalOpen}
+          setQueryParams={setQueryParams}
+          handleClose={close}
+        />
+      )}
       {/* <div className="search__params">
         <Link>Cuisine</Link>
         <Link>Ingredient</Link>
