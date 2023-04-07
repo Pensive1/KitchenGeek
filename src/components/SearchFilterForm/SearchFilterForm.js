@@ -8,11 +8,17 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
   const getFilterValues = (e) => {
     const field = e.target.name;
     const value = e.target.value;
+    const checked = e.target.checked;
+    const valueSet = { ...filterValues };
 
-    if (value !== "") {
+    if (value === "on" && checked) {
+      setFilterValues({ ...filterValues, [field]: checked });
+    } else if (value === "on" && !checked) {
+      delete valueSet[field];
+      setFilterValues(valueSet);
+    } else if (value !== "") {
       setFilterValues({ ...filterValues, [field]: value });
-    } else {
-      const valueSet = { ...filterValues };
+    } else if (value === "") {
       delete valueSet[field];
       setFilterValues(valueSet);
     }
@@ -28,7 +34,11 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
     <>
       <h3>Filter by</h3>
       <div className="__ingred-search">
-        <input type="checkbox" name="byIngredient"></input>
+        <input
+          type="checkbox"
+          name="byIngredient"
+          onChange={(e) => getFilterValues(e)}
+        ></input>
         <label htmlFor="byIngredient">By ingredient</label>
       </div>
 

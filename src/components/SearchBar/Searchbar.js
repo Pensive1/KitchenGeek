@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../components/Modal/Modal.js";
 import "./Searchbar.scss";
 
 const Searchbar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState(null);
-  const [queryParams, setQueryParams] = useState(null);
+  const [queryParams, setQueryParams] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
 
   const close = () => {
@@ -15,10 +15,31 @@ const Searchbar = () => {
   };
   const open = () => setModalOpen(true);
 
+  const parseParams = () => {
+    const paramStr = `?${Object.entries(queryParams)
+      .map((param) => param.join("="))
+      .join("&")}`;
+    return paramStr;
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
+
+    //filter search navigation here
+    //if no params
     navigate(`/results/${query}`);
+
+    //if queries exist
+    //Process object entries as url params (?...&...&)
+    //if ingredients (use Object.hasOwn(obj, propName)) : Handle ingredient search
+    //if no ingredients prop exist : carry out complex search (?diet="x"&type="x")
   };
+
+  useEffect(() => {
+    if (Object.keys(queryParams).length > 0) {
+      setQueryParams(encodeURI(parseParams()));
+    }
+  }, [modalOpen]);
 
   return (
     <form onSubmit={handleSearch} method="dialog">
