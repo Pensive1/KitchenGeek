@@ -2,12 +2,14 @@ import filterData from "../../data/filterOptions.json";
 
 const { cuisines, diets, times } = filterData;
 
-const SearchFilterForm = () => {
+const SearchFilterForm = ({ onClick }) => {
   return (
     <>
       <h3>Filter by</h3>
-      <input type="checkbox" name="byIngredient"></input>
-      <label htmlFor="byIngredient">By ingredient</label>
+      <div className="__ingred-search">
+        <input type="checkbox" name="byIngredient"></input>
+        <label htmlFor="byIngredient">By ingredient</label>
+      </div>
 
       <fieldset>
         <select name="cuisine">
@@ -47,7 +49,9 @@ const SearchFilterForm = () => {
         <label htmlFor="time">Time</label>
       </fieldset>
 
-      <button type="submit">Close</button>
+      <button type="submit" onClick={onClick}>
+        Close
+      </button>
     </>
   );
 };

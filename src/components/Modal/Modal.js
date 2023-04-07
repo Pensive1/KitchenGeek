@@ -1,10 +1,20 @@
+import Backdrop from "../Backdrop/Backdrop";
 import SearchFilterForm from "../SearchFilterForm/SearchFilterForm";
+import "./Modal.scss";
 
-const Modal = () => {
+const Modal = ({ handleClose, text }) => {
   return (
     <>
-      <h4>Modal</h4>
-      <SearchFilterForm />
+      <Backdrop onClick={handleClose}>
+        <h4>Modal</h4>
+        <dialog
+          open
+          className="modal__container"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <SearchFilterForm onClick={handleClose} />
+        </dialog>
+      </Backdrop>
     </>
   );
 };

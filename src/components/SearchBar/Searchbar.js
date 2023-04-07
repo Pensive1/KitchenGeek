@@ -9,12 +9,20 @@ const Searchbar = () => {
   const [query, setQuery] = useState(null);
   // + queryParams in state
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const close = (e) => {
+    e.preventDefault();
+    setModalOpen(false);
+  };
+  const open = () => setModalOpen(true);
+
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/results/${query}`);
   };
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} method="dialog">
       <input
         type="search"
         name="recipeSearch"
@@ -22,8 +30,8 @@ const Searchbar = () => {
           setQuery(e.target.value);
         }}
       />
-      <Link>Filters</Link>
-      <Modal />
+      <Link onClick={() => (modalOpen ? close() : open())}>Filters</Link>
+      {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
       {/* <div className="search__params">
         <Link>Cuisine</Link>
         <Link>Ingredient</Link>
