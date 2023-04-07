@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "./Searchbar.scss";
 import { useState } from "react";
+import Modal from "../../components/Modal/Modal.js";
+import "./Searchbar.scss";
 
 const Searchbar = () => {
   const navigate = useNavigate();
@@ -21,12 +22,14 @@ const Searchbar = () => {
           setQuery(e.target.value);
         }}
       />
-      <div className="search__params">
+      <Link>Filters</Link>
+      <Modal />
+      {/* <div className="search__params">
         <Link>Cuisine</Link>
         <Link>Ingredient</Link>
         <Link>Diet</Link>
         <Link>Time</Link>
-      </div>
+      </div> */}
     </form>
   );
 };

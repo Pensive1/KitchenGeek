@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
-import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
 import Searchbar from "../../components/SearchBar/Searchbar.js";
+import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
+import { useEffect, useState } from "react";
 
 const Discover = () => {
   const [recipeData, setRecipeData] = useState(null);
