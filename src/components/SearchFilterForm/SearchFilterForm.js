@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import filterData from "../../data/filterOptions.json";
 const { cuisines, diets, times } = filterData;
 
 const SearchFilterForm = ({ onClick, setQueryParams }) => {
   const [filterValues, setFilterValues] = useState({});
+  const extraAttrs = useRef(null);
+  const cuisineDropdown = useRef(null);
+  const dietDropdown = useRef(null);
+  const timeDropdown = useRef(null);
 
   const getFilterValues = (e) => {
     const field = e.target.name;
@@ -11,6 +15,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
     const checked = e.target.checked;
     const valueSet = { ...filterValues };
 
+    //Store params in state
     if (value === "on" && checked) {
       setFilterValues({ ...filterValues, [field]: checked });
     } else if (value === "on" && !checked) {
@@ -24,10 +29,38 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
     }
   };
 
+  const parseParams = () => {
+    const paramStr = `?${Object.entries(filterValues)
+      .map((param) => param.join("="))
+      .join("&")}`;
+    return paramStr;
+  };
+
   const saveParamsOnClose = (e) => {
     e.preventDefault();
-    setQueryParams(filterValues);
+    setQueryParams(parseParams(filterValues));
     onClick();
+  };
+
+  const disableFieldset = (e) => {
+    const checkBxName = e.target.name;
+    const checked = e.target.checked;
+
+    if (checked) {
+      const valueSet = { ...filterValues };
+      extraAttrs.current.setAttribute("disabled", null);
+
+      cuisineDropdown.current.value = "";
+      dietDropdown.current.value = "";
+      timeDropdown.current.value = "";
+
+      Object.keys(valueSet).forEach((key) => delete valueSet[key]);
+      valueSet[checkBxName] = checked;
+      // console.log(valueSet);
+      setFilterValues(valueSet);
+    } else {
+      extraAttrs.current.removeAttribute("disabled");
+    }
   };
 
   return (
@@ -37,14 +70,21 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
         <input
           type="checkbox"
           name="byIngredient"
-          onChange={(e) => getFilterValues(e)}
+          onChange={(e) => {
+            getFilterValues(e);
+            disableFieldset(e);
+          }}
         ></input>
         <label htmlFor="byIngredient">By ingredient</label>
       </div>
 
-      <fieldset>
+      <fieldset className="filter__fieldset" ref={extraAttrs}>
         <label>Cuisine</label>
-        <select name="cuisine" onChange={(e) => getFilterValues(e)}>
+        <select
+          name="cuisine"
+          onChange={(e) => getFilterValues(e)}
+          ref={cuisineDropdown}
+        >
           <option value=""></option>
           {cuisines.map((cuisine, index) => {
             return (
@@ -56,7 +96,11 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
         </select>
 
         <label htmlFor="diet">Diet</label>
-        <select name="diet" onChange={(e) => getFilterValues(e)}>
+        <select
+          name="diet"
+          onChange={(e) => getFilterValues(e)}
+          ref={dietDropdown}
+        >
           <option value=""></option>
           {diets.map((type, index) => {
             return (
@@ -70,6 +114,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
         <label htmlFor="type">Time</label>
         <select
           name="type"
+          ref={timeDropdown}
           onChange={(e) => {
             getFilterValues(e);
           }}

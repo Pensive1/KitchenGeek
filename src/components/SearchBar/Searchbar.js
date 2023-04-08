@@ -15,13 +15,6 @@ const Searchbar = () => {
   };
   const open = () => setModalOpen(true);
 
-  const parseParams = () => {
-    const paramStr = `?${Object.entries(queryParams)
-      .map((param) => param.join("="))
-      .join("&")}`;
-    return paramStr;
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -35,11 +28,11 @@ const Searchbar = () => {
     //if no ingredients prop exist : carry out complex search (?diet="x"&type="x")
   };
 
-  useEffect(() => {
-    if (Object.keys(queryParams).length > 0) {
-      setQueryParams(encodeURI(parseParams()));
-    }
-  }, [modalOpen]);
+  // useEffect(() => {
+  //   if (Object.keys(queryParams).length > 0) {
+  //     setQueryParams(encodeURI(parseParams()));
+  //   }
+  // }, [modalOpen]);
 
   return (
     <form onSubmit={handleSearch} method="dialog">
