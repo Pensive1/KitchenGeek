@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../../components/Modal/Modal.js";
 import "./Searchbar.scss";
 
@@ -9,6 +9,10 @@ const Searchbar = () => {
   const [query, setQuery] = useState(null);
   const [queryParams, setQueryParams] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const searchPlaceholder =
+    queryParams === "?ingredients="
+      ? "Find recipes by ingredient"
+      : "Find a recipe";
 
   const close = () => {
     setModalOpen(false);
@@ -31,17 +35,14 @@ const Searchbar = () => {
         navigate(`/results/${query}${queryParams}`);
         break;
     }
-
-    //Process object entries as url params (?...&...&)
-    //if ingredients (use Object.hasOwn(obj, propName)) : Handle ingredient search
-    //if no ingredients prop exist : carry out complex search (?diet="x"&type="x")
   };
 
   return (
-    <form onSubmit={handleSearch} method="dialog">
+    <form onSubmit={handleSearch}>
       <input
         type="search"
         name="recipeSearch"
+        placeholder={searchPlaceholder}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
