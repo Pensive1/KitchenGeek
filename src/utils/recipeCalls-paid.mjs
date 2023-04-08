@@ -48,10 +48,24 @@ export const searchRecipesByCuisine = async (cuisine) => {
   }
 };
 
+//Get recipe by any parameter
+export const complexSearch = async (queryParams) => {
+  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex${queryParams}`;
+
+  try {
+    //return the api call
+    const { data } = await axios.get(recipeCuisineUrl, config);
+    // console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 //Get recipe by ingredient
-export const searchRecipesByIngredients = async ([ingredients]) => {
-  const ingredientList = ingredients.join(",");
-  const ingredientRecipeUrl = `${baseURL}/recipes/findByIngredients?ingredients=${ingredientList}`;
+export const searchRecipesByIngredients = async (ingredients) => {
+  // const ingredientList = ingredients.join(",");
+  const ingredientRecipeUrl = `${baseURL}/recipes/findByIngredients?ingredients=${ingredients}`;
 
   try {
     //return the api call

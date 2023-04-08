@@ -29,10 +29,10 @@ const Searchbar = () => {
         navigate(`/results/${query}`);
         break;
       case "?ingredients=":
-        navigate(`/results/${queryParams}${query}`);
+        navigate(`/results${queryParams}${query}`);
         break;
       default:
-        navigate(`/results/${query}${queryParams}`);
+        navigate(`/results${queryParams}${query ? `&query=${query}` : ""}`);
         break;
     }
   };
@@ -61,6 +61,7 @@ const Searchbar = () => {
         <Link>Diet</Link>
         <Link>Time</Link>
       </div> */}
+      <button type="submit">Search</button>
     </form>
   );
 };
