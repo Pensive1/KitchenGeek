@@ -17,7 +17,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
 
     //Store params in state
     if (value === "on" && checked) {
-      setFilterValues({ ...filterValues, [field]: checked });
+      setFilterValues({ ...filterValues, [field]: "" });
     } else if (value === "on" && !checked) {
       delete valueSet[field];
       setFilterValues(valueSet);
@@ -38,7 +38,9 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
 
   const saveParamsOnClose = (e) => {
     e.preventDefault();
-    setQueryParams(parseParams(filterValues));
+    if (Object.keys(filterValues).length > 0) {
+      setQueryParams(parseParams(filterValues));
+    }
     onClick();
   };
 
@@ -55,7 +57,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
       timeDropdown.current.value = "";
 
       Object.keys(valueSet).forEach((key) => delete valueSet[key]);
-      valueSet[checkBxName] = checked;
+      valueSet[checkBxName] = "";
       // console.log(valueSet);
       setFilterValues(valueSet);
     } else {
@@ -69,13 +71,13 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
       <div className="__ingred-search">
         <input
           type="checkbox"
-          name="byIngredient"
+          name="ingredients"
           onChange={(e) => {
             getFilterValues(e);
             disableFieldset(e);
           }}
         ></input>
-        <label htmlFor="byIngredient">By ingredient</label>
+        <label htmlFor="ingredients">By ingredient</label>
       </div>
 
       <fieldset className="filter__fieldset" ref={extraAttrs}>
