@@ -43,11 +43,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex-grow: 1;
         color: $primary-black;
         font-weight: 600;
         line-height: 1.76rem;
         width: 16.4rem;
+        height: 100%;
     }
 
     &__title{
