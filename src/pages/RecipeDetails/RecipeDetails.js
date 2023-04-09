@@ -64,22 +64,32 @@ const RecipeDetails = () => {
 
   return (
     <>
-      <h1>Recipe Details</h1>
+      {/* <h1>Recipe Details</h1> */}
       {recipeDetails !== null ? (
         <>
-          <h3>{recipeDetails.title}</h3>
-          <p>By {recipeDetails.sourceName}</p>
-          <img src={recipeDetails.image} alt={recipeDetails.title} />
-          <Link onClick={bookmarkRecipe}>
-            <IcnBookmark isBookmarked={isBookmarked} />
-          </Link>
-          <IngredientList
-            ingredients={recipeDetails.extendedIngredients}
-            servings={recipeDetails.servings}
-          />
-          <RecipeInstructions
-            steps={recipeDetails.analyzedInstructions[0].steps}
-          />
+          <div className="content__wrapper">
+            <main className="recipe__hero">
+              <img
+                className="recipe__img"
+                src={recipeDetails.image}
+                alt={recipeDetails.title}
+              />
+              <div className="recipe__details">
+                <h3 className="recipe__title">{recipeDetails.title}</h3>
+                <p className="recipe__author">By {recipeDetails.sourceName}</p>
+              </div>
+              <Link className="recipe__bookmark" onClick={bookmarkRecipe}>
+                <IcnBookmark isBookmarked={isBookmarked} />
+              </Link>
+            </main>
+            <IngredientList
+              ingredients={recipeDetails.extendedIngredients}
+              servings={recipeDetails.servings}
+            />
+            <RecipeInstructions
+              steps={recipeDetails.analyzedInstructions[0].steps}
+            />
+          </div>
         </>
       ) : (
         <p>Loading recipe details</p>

@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./IngredientList.scss";
 import Ingredient from "../Ingredient/Ingredient.js";
 import { Link } from "react-router-dom";
+import IcnAdd from "../Icons/IcnAdd";
+import IcnMinus from "../Icons/IcnMinus";
+import IcnScale from "../Icons/IcnScale";
 
 const IngredientList = ({ ingredients, servings }) => {
   const [ingServing, setIngServing] = useState(servings);
@@ -15,10 +18,10 @@ const IngredientList = ({ ingredients, servings }) => {
     e.preventDefault();
     // console.log(e.target.innerText);
     if (unit === "metric") {
-      e.target.innerText = "Imperial";
+      e.target.innerText = "US";
       setUnit("us");
     } else {
-      e.target.innerText = "Metric";
+      e.target.innerText = "UK";
       setUnit("metric");
     }
   };
@@ -29,9 +32,9 @@ const IngredientList = ({ ingredients, servings }) => {
 
   return (
     <>
-      <section>
-        <h4>Ingredients</h4>
-        <ul>
+      <section className="recipe__ingredients">
+        <h4 className="recipe__heading">Ingredients</h4>
+        <ul className="recipe__ingredient-list">
           {ingredients.map((ingredient, index) => {
             return (
               <Ingredient
@@ -45,39 +48,50 @@ const IngredientList = ({ ingredients, servings }) => {
           })}
         </ul>
       </section>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <p>Servings</p>
-        <button
-          onClick={() => {
-            if (ingServing !== 1) {
-              updatePortionWithButtons(-1);
-            }
-          }}
-        >
-          -
-        </button>
-        <input
-          type="number"
-          name="RecipeServing"
-          value={ingServing}
-          onChange={(e) => updatePortion(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            updatePortionWithButtons(+1);
-          }}
-        >
-          +
-        </button>
-        <button
-          type="reset"
-          onClick={() => {
-            setIngServing(servings);
-          }}
-        >
-          Reset
-        </button>
-        <Link onClick={updateUnit}>Metric</Link>
+      <form onSubmit={(e) => e.preventDefault()} className="recipe__servings">
+        <div className="recipe__serving-details">
+          <p className="recipe__label">Serves</p>
+          <div className="recipe__portion-controls">
+            <button
+              className="recipe__portion-btn"
+              onClick={() => {
+                if (ingServing !== 1) {
+                  updatePortionWithButtons(-1);
+                }
+              }}
+            >
+              <IcnMinus />
+            </button>
+            <input
+              className="recipe__portion-amount"
+              type="number"
+              name="RecipeServing"
+              value={ingServing}
+              onChange={(e) => updatePortion(e.target.value)}
+            />
+            <button
+              className="recipe__portion-btn"
+              onClick={() => {
+                updatePortionWithButtons(+1);
+              }}
+            >
+              <IcnAdd />
+            </button>
+          </div>
+          <button
+            className="recipe__portion-reset"
+            type="reset"
+            onClick={() => {
+              setIngServing(servings);
+            }}
+          >
+            Reset
+          </button>
+        </div>
+
+        <Link className="recipe__convert" onClick={updateUnit}>
+          UK
+        </Link>
       </form>
     </>
   );

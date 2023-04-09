@@ -5,22 +5,41 @@
   box-sizing: border-box;
 }
 html {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 62.5%;
 }
 
 body {
   font-size: 1.6rem;
+  margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h3,
+h4 {
+  font-weight: 600;
+}
 p {
   margin: 0;
 }
 
-input, button, select{
-  font-family: 'Outfit', sans-serif;
+input,
+button,
+select {
+  font-family: "Outfit", sans-serif;
 }
 
-a{
+a {
   text-decoration: none;
+}
+img {
+  display: block;
 }

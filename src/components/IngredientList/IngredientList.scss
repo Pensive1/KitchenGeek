@@ -1,5 +1,79 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+
+// Hides the spinner on the number input
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.recipe {
+  &__ingredient-list {
+    list-style: none;
+  }
+
+  // Ingredients List
+  &__ingredient {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+      gap: 12px;
+    }
+
+    &-portion {
+      font-weight: 600;
+    }
+  }
+
+  //Serving Form
+  &__servings {
+    display: flex;
+    align-items: center;
+  }
+
+  &__serving-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+  }
+
+  &__portion-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 14px;
+  }
+
+  &__portion-amount {
+    @include input-style;
+    width: 3.2rem;
+    height: 3.2rem;
+    text-align: center;
+  }
+
+  &__portion-btn {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+  }
+
+  &__convert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+
+    width: 60px;
+    height: 26px;
+
+    border: 2px solid #999999;
+    border-radius: 613px;
+  }
 }

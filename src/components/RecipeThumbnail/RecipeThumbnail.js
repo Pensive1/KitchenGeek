@@ -26,6 +26,7 @@ const RecipeThumbnail = ({ recipe }) => {
       title: recipe.title,
       sourceName: recipe.sourceName,
       image: recipe.image,
+      timestamp: Date.now(),
     };
 
     if (isBookmarked) {

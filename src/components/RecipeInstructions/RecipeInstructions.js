@@ -1,10 +1,15 @@
+import "./RecipeInstructions.scss";
 const RecipeInstructions = ({ steps }) => {
   return (
-    <section>
-      <h4>Instructions</h4>
-      <ol>
+    <section className="recipe__instructions">
+      <h4 className="recipe__heading">Instructions</h4>
+      <ol className="recipe__steps">
         {steps.map((instruction, index) => {
-          return <li key={index}>{instruction.step}</li>;
+          return (
+            <li key={index} className="recipe__step">
+              {instruction.step}
+            </li>
+          );
         })}
       </ol>
     </section>
