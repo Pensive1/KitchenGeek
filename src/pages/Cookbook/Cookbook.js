@@ -16,7 +16,7 @@ const Cookbook = () => {
 
   return (
     <>
-      {recipes !== null ? (
+      {recipes ? (
         <>
           <h1>My Cookbook</h1>
           <RecipeList recipes={recipes} />

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import IcnBookmark from "../Icons/IcnBookmark";
 import "./RecipeThumbnail.scss";
-import { checkBookmarks } from "../../utils/usrActions";
+import {
+  saveRecipe,
+  removeRecipe,
+  checkBookmarks,
+} from "../../utils/usrActions";
 import { useState, useEffect } from "react";
 
 const RecipeThumbnail = ({ recipe }) => {
@@ -16,29 +20,62 @@ const RecipeThumbnail = ({ recipe }) => {
     }
   };
 
+  const bookmarkRecipe = async () => {
+    const recipeData = {
+      id: recipe.id,
+      title: recipe.title,
+      sourceName: recipe.sourceName,
+      image: recipe.image,
+    };
+
+    if (isBookmarked) {
+      try {
+        removeRecipe(recipe.id);
+        setIsBookmarked(false);
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (!isBookmarked) {
+      try {
+        await saveRecipe(recipeData);
+        setIsBookmarked(true);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   useEffect(() => {
     bookmarkCheck();
   }, []);
 
   return (
-    <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
-      <article className="recipe-thumb">
+    <article className="recipe-thumb">
+      <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
         <img
           className="recipe-thumb__img"
           src={recipe.image}
           alt={recipe.title}
         />
-        <div className="recipe-thumb__details">
+      </Link>
+      <div className="recipe-thumb__details">
+        <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
           <div className="recipe-thumb__txt">
             <p className="recipe-thumb__title">{recipe.title}</p>
             <p className="recipe-thumb__author">{recipe.sourceName}</p>
           </div>
-          <div className="recipe-thumb__actions">
-            <IcnBookmark isBookmarked={isBookmarked} />
-          </div>
+        </Link>
+        <div
+          className="recipe-thumb__actions"
+          onClick={(e) => {
+            e.stopPropagation();
+            bookmarkRecipe();
+          }}
+        >
+          <IcnBookmark isBookmarked={isBookmarked} />
         </div>
-      </article>
-    </Link>
+      </div>
+    </article>
   );
 };
 
