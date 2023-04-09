@@ -67,7 +67,7 @@ const RecipeDetails = () => {
       {/* <h1>Recipe Details</h1> */}
       {recipeDetails !== null ? (
         <>
-          <div className="content__wrapper">
+          <div className="recipe">
             <main className="recipe__hero">
               <img
                 className="recipe__img"
@@ -82,13 +82,16 @@ const RecipeDetails = () => {
                 <IcnBookmark isBookmarked={isBookmarked} />
               </Link>
             </main>
-            <IngredientList
-              ingredients={recipeDetails.extendedIngredients}
-              servings={recipeDetails.servings}
-            />
-            <RecipeInstructions
-              steps={recipeDetails.analyzedInstructions[0].steps}
-            />
+
+            <div className="content__wrapper">
+              <IngredientList
+                ingredients={recipeDetails.extendedIngredients}
+                servings={recipeDetails.servings}
+              />
+              <RecipeInstructions
+                steps={recipeDetails.analyzedInstructions[0].steps}
+              />
+            </div>
           </div>
         </>
       ) : (

@@ -4,10 +4,14 @@
 @use "./partials/mixins" as *;
 @use "./partials/resets";
 
-#root{
-    @include desktop{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+#root {
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.content__wrapper {
+  @include responsive-wrapper;
 }

@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "./functions" as *;
 
 //GLOBAL MEDIA QUERIES
 @mixin tablet {
@@ -13,7 +14,19 @@
   }
 }
 
-// GLOBAL SHADOW
+// GLOBAL
+@mixin responsive-wrapper {
+  width: $wrapper-width-mobile;
+
+  @include tablet {
+    width: $wrapper-width-tablet;
+  }
+
+  @include desktop {
+    width: $wrapper-width-desktop;
+  }
+}
+
 @mixin global-shadow {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }

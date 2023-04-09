@@ -1,6 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/functions" as *;
+// @use "../../styles/partials/functions" as *;
 
 // Hides the spinner on the number input
 input[type="number"]::-webkit-outer-spin-button,

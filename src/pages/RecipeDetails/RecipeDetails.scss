@@ -3,6 +3,10 @@
 @use "../../styles/partials/functions" as *;
 
 .recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   &__hero {
     aspect-ratio: 16/9;
     width: 100%;
@@ -11,10 +15,27 @@
     isolation: isolate;
   }
 
+  &__bookmark {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    padding: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.3rem;
+  }
+
+  &__bookmark > svg {
+    height: 1.6rem;
+    fill: $primary-white;
+  }
+
   &__img {
     width: 100%;
     object-fit: cover;
     object-position: center;
+    position: relative;
+    background-color: black;
+    filter: brightness(70%);
   }
 
   &__details {
