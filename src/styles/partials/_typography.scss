@@ -1,4 +1,6 @@
 // BRAND TYPEFACE
+@use "./mixins" as *;
+
 @font-face {
   font-family: "Outfit";
   src: url("../../assets/fonts/Outfit/Outfit-VariableFont_wght.ttf") format("TrueType-variations"),
@@ -7,4 +9,9 @@
 font-weight: 100 900;  
 font-display: swap;
 font-style: normal;
+}
+
+//GLOBAL
+@mixin txt-body{
+  font-size: 1.4rem;
 }
