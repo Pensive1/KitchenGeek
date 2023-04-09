@@ -1,0 +1,38 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+// Mobile
+$mobile-column: calc(
+  (100vw - (($mobile-margin * 2) + ($mobile-gutter * 3))) / 4
+);
+
+$wrapper-width-mobile: calc(100vw - ($mobile-margin * 2));
+
+@function calc-col-width-mobile($column-amount) {
+  @return calc(
+    ($mobile-column * $column-amount) + ($mobile-gutter * ($column-amount - 1))
+  );
+}
+
+//Tablet
+$tablet-column: calc(
+  (100vw - (($tablet-margin * 2) + ($tablet-gutter * 11))) / 12
+);
+
+$wrapper-width-tablet: calc(100vw - ($tablet-margin * 2));
+
+@function calc-col-width-tablet($column-amount) {
+  @return calc(
+    ($tablet-column * $column-amount) + ($tablet-gutter * ($column-amount - 1))
+  );
+}
+
+// Desktop
+$wrapper-width-desktop: calc(($desktop-column * 12) + $desktop-gutter * 11);
+
+@function calc-col-width-desktop($column-amount) {
+  @return calc(
+    ($desktop-column * $column-amount) +
+      ($desktop-gutter * ($column-amount - 1))
+  );
+}

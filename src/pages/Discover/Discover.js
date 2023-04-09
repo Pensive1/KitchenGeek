@@ -1,5 +1,6 @@
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import Searchbar from "../../components/SearchBar/Searchbar.js";
+import "../../styles/styles.scss";
 import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
 import { useEffect, useState } from "react";
 

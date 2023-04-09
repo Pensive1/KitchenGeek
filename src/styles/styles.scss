@@ -1,0 +1,13 @@
+@use "./partials/variables" as *;
+@use "./partials/functions" as *;
+@use "./partials/typography" as *;
+@use "./partials/mixins" as *;
+@use "./partials/resets";
+
+#root{
+    @include desktop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

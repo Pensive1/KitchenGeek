@@ -1,0 +1,22 @@
+/* RESETS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Outfit', sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+input, button, select{
+  font-family: 'Outfit', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
