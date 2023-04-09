@@ -14,4 +14,17 @@ font-style: normal;
 //GLOBAL
 @mixin txt-body{
   font-size: 1.4rem;
+
+  @include tablet{
+    font-size: 1.6rem;  
+  }
+}
+
+@mixin txt-label{
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  @include tablet{
+    font-size: 1.4rem;  
+  }
 }
