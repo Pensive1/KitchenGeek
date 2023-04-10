@@ -7,7 +7,7 @@ const IcnBookmark = ({ isBookmarked }) => {
         <svg
           width="24"
           height="31"
-          viewBox="0 0 31 31"
+          viewBox="0 0 23 31"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M0 4.5C0 2.01472 2.01472 0 4.5 0H19.5C21.9853 0 24 2.01472 24 4.5V28.5426C24 30.3727 21.9314 31.4372 20.4422 30.3735L12 24.3434L3.55779 30.3735C2.06858 31.4372 0 30.3727 0 28.5426V4.5Z" />
@@ -16,7 +16,7 @@ const IcnBookmark = ({ isBookmarked }) => {
         <svg
           width="24"
           height="31"
-          viewBox="0 0 31 31"
+          viewBox="0 0 23 31"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

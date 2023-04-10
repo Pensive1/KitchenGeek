@@ -70,8 +70,9 @@ Without the server, **_this application will not work properly_**.
 **Tools**
 
 - Visual Studio Code
-- Postman
-- Figma
+- Postman (Testing API endpoints)
+- Figma (UI Design)
+- Asana (for planning)
 
 ## Roadmap
 
