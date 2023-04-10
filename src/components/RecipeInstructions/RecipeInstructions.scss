@@ -3,6 +3,18 @@
 @use "../../styles/partials/functions" as *;
 
 .recipe {
+  &__instructions {
+    @include tablet {
+      width: calc-col-width-tablet(6);
+      // padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 0px 0px 8px;
+      gap: 24px;
+      overflow: auto;
+    }
+  }
   &__steps {
     display: flex;
     flex-direction: column;

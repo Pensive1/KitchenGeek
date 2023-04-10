@@ -3,28 +3,46 @@
 
 @font-face {
   font-family: "Outfit";
-  src: url("../../assets/fonts/Outfit/Outfit-VariableFont_wght.ttf") format("TrueType-variations"),
+  src: url("../../assets/fonts/Outfit/Outfit-VariableFont_wght.ttf")
+      format("TrueType-variations"),
     url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600")
       format("truetype");
-font-weight: 100 900;  
-font-display: swap;
-font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
 }
 
 //GLOBAL
-@mixin txt-body{
-  font-size: 1.4rem;
+@mixin txt-header {
+  font-size: 2rem;
 
-  @include tablet{
-    font-size: 1.6rem;  
+  @include tablet {
+    font-size: 3.2rem;
   }
 }
 
-@mixin txt-label{
+@mixin txt-subheader {
+  font-size: 2rem;
+
+  @include tablet {
+    font-size: 2.4rem;
+    // margin-bottom: 2.4rem;
+  }
+}
+
+@mixin txt-body {
+  font-size: 1.4rem;
+
+  @include tablet {
+    font-size: 1.6rem;
+  }
+}
+
+@mixin txt-label {
   font-size: 1.2rem;
   font-weight: 400;
 
-  @include tablet{
-    font-size: 1.4rem;  
+  @include tablet {
+    font-size: 1.4rem;
   }
 }

@@ -88,7 +88,7 @@ const RecipeDetails = () => {
               steps={recipeDetails.analyzedInstructions[0].steps}
             />
 
-            <div className="content__wrapper --hidden-mobile">
+            <div className="recipe__content-wrapper --hidden-mobile">
               <IngredientList
                 ingredients={recipeDetails.extendedIngredients}
                 servings={recipeDetails.servings}

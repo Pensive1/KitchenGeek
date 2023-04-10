@@ -33,64 +33,68 @@ const IngredientList = ({ ingredients, servings }) => {
     <>
       <section className="recipe__ingredients">
         <h4 className="recipe__heading --hidden-mobile">Ingredients</h4>
-        <ul className="recipe__ingredient-list">
-          {ingredients.map((ingredient, index) => {
-            return (
-              <Ingredient
-                key={index}
-                ingredient={ingredient}
-                origServing={servings}
-                newServing={ingServing}
-                unit={unit}
-              />
-            );
-          })}
-        </ul>
-        <form onSubmit={(e) => e.preventDefault()} className="recipe__servings">
-          <p className="recipe__label">Serves</p>
-          <div className="recipe__serving-details">
-            <div className="recipe__portion-controls">
+        <div className="recipe__ingredient-details">
+          <ul className="recipe__ingredient-list">
+            {ingredients.map((ingredient, index) => {
+              return (
+                <Ingredient
+                  key={index}
+                  ingredient={ingredient}
+                  origServing={servings}
+                  newServing={ingServing}
+                  unit={unit}
+                />
+              );
+            })}
+          </ul>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="recipe__servings"
+          >
+            <p className="recipe__label">Serves</p>
+            <div className="recipe__serving-details">
+              <div className="recipe__portion-controls">
+                <button
+                  className="recipe__portion-btn"
+                  onClick={() => {
+                    if (ingServing !== 1) {
+                      updatePortionWithButtons(-1);
+                    }
+                  }}
+                >
+                  <IcnMinus />
+                </button>
+                <input
+                  className="recipe__portion-amount"
+                  type="number"
+                  name="RecipeServing"
+                  value={ingServing}
+                  onChange={(e) => updatePortion(e.target.value)}
+                />
+                <button
+                  className="recipe__portion-btn"
+                  onClick={() => {
+                    updatePortionWithButtons(+1);
+                  }}
+                >
+                  <IcnAdd />
+                </button>
+              </div>
               <button
-                className="recipe__portion-btn"
+                className="recipe__portion-reset"
+                type="reset"
                 onClick={() => {
-                  if (ingServing !== 1) {
-                    updatePortionWithButtons(-1);
-                  }
+                  setIngServing(servings);
                 }}
               >
-                <IcnMinus />
-              </button>
-              <input
-                className="recipe__portion-amount"
-                type="number"
-                name="RecipeServing"
-                value={ingServing}
-                onChange={(e) => updatePortion(e.target.value)}
-              />
-              <button
-                className="recipe__portion-btn"
-                onClick={() => {
-                  updatePortionWithButtons(+1);
-                }}
-              >
-                <IcnAdd />
+                Reset
               </button>
             </div>
-            <button
-              className="recipe__portion-reset"
-              type="reset"
-              onClick={() => {
-                setIngServing(servings);
-              }}
-            >
-              Reset
-            </button>
-          </div>
-
-          <Link className="recipe__convert" onClick={updateUnit}>
-            UK
-          </Link>
-        </form>
+            <Link className="recipe__convert" onClick={updateUnit}>
+              UK
+            </Link>
+          </form>
+        </div>
       </section>
     </>
   );

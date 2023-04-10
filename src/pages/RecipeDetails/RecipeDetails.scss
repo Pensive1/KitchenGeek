@@ -1,11 +1,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/functions" as *;
+@use "../../styles/partials/typography" as *;
 
 .recipe {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__content-wrapper {
+    @include responsive-wrapper;
+    gap: $tablet-gutter;
+    padding: 3.6rem 0;
+  }
 
   &__hero {
     aspect-ratio: 16/9;
@@ -30,6 +37,7 @@
   }
 
   &__img {
+    aspect-ratio: 16/9;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -52,5 +60,17 @@
     flex-direction: column;
     padding: 1.6rem;
     gap: 0.4rem;
+  }
+
+  &__title {
+    @include txt-header;
+  }
+
+  &__author {
+    @include txt-body;
+  }
+
+  &__heading {
+    @include txt-subheader;
   }
 }
