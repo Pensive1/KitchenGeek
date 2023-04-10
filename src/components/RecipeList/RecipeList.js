@@ -3,7 +3,7 @@ import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail";
 
 const RecipeList = ({ recipes }) => {
   return (
-    <section>
+    <section className="recipe__list">
       {recipes === [] ? (
         <p>No bookmarked recipes</p>
       ) : (

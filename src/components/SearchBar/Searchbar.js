@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal.js";
 import "./Searchbar.scss";
+import IcnFilter from "../Icons/IcnFilter.js";
 
 const Searchbar = () => {
   const navigate = useNavigate();
@@ -38,8 +39,9 @@ const Searchbar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form className="search" onSubmit={handleSearch}>
       <input
+        className="search__bar"
         type="search"
         name="recipeSearch"
         placeholder={searchPlaceholder}
@@ -47,7 +49,12 @@ const Searchbar = () => {
           setQuery(e.target.value);
         }}
       />
-      <Link onClick={() => (modalOpen ? close() : open())}>Filters</Link>
+      <Link
+        className="search__filter-link"
+        onClick={() => (modalOpen ? close() : open())}
+      >
+        <IcnFilter />
+      </Link>
       {modalOpen && (
         <Modal
           modalOpen={modalOpen}
@@ -61,7 +68,9 @@ const Searchbar = () => {
         <Link>Diet</Link>
         <Link>Time</Link>
       </div> */}
-      <button type="submit">Search</button>
+      <button className="search__submit" type="submit">
+        Search
+      </button>
     </form>
   );
 };

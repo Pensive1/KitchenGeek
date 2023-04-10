@@ -1,8 +1,8 @@
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import Searchbar from "../../components/SearchBar/Searchbar.js";
-import "../../styles/styles.scss";
 import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
 import { useEffect, useState } from "react";
+import "../../styles/styles.scss";
 
 const Discover = () => {
   const [recipeData, setRecipeData] = useState(null);
@@ -24,9 +24,10 @@ const Discover = () => {
 
   return (
     <>
-      <h1>Discover Page</h1>
-      <Searchbar />
-      <RecipeList recipes={recipeData} />
+      <div className="content__wrapper">
+        <Searchbar />
+        <RecipeList recipes={recipeData} />
+      </div>
     </>
   );
 };

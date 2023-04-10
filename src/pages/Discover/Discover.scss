@@ -1,0 +1,8 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+@use "../../styles/partials/typography" as *;
+
+.discover {
+  @include responsive-wrapper;
+}
