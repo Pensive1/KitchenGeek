@@ -12,6 +12,10 @@
     @include responsive-wrapper;
     gap: $tablet-gutter;
     padding: 3.6rem 0;
+
+    @include desktop {
+      gap: $desktop-gutter;
+    }
   }
 
   &__hero {
@@ -20,20 +24,46 @@
     background-color: $primary-grey;
     position: relative;
     isolation: isolate;
+
+    @include desktop {
+      display: flex;
+      aspect-ratio: unset;
+      background-color: unset;
+      gap: $desktop-gutter;
+    }
   }
 
   &__bookmark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 1.6rem;
     right: 1.6rem;
-    padding: 1.2rem;
     background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 0.3rem;
+    border-radius: 0.6rem;
+    aspect-ratio: 1/1;
+    width: 4.4rem;
+    z-index: 1;
+
+    @include tablet {
+      top: 3.2rem;
+      right: 3.2rem;
+    }
+
+    @include desktop {
+      top: 1.5rem;
+      left: 35rem;
+    }
   }
 
   &__bookmark > svg {
-    height: 1.6rem;
+    height: 2rem;
     fill: $primary-white;
+
+    @include tablet {
+      scale: 1.2;
+    }
   }
 
   &__img {
@@ -44,6 +74,12 @@
     position: relative;
     background-color: black;
     filter: brightness(70%);
+
+    @include desktop {
+      width: calc-col-width-desktop(5);
+      border-radius: 0.6rem;
+      filter: unset;
+    }
   }
 
   &__details {
@@ -58,8 +94,20 @@
     );
     display: flex;
     flex-direction: column;
-    padding: 1.6rem;
+    padding: 2.4rem 1.6rem 1.6rem;
     gap: 0.4rem;
+
+    @include tablet {
+      padding: 4rem 3.2rem 3.2rem;
+    }
+
+    @include desktop {
+      position: relative;
+      color: $primary-black;
+      padding: 0;
+      background: unset;
+      width: calc-col-width-desktop(7);
+    }
   }
 
   &__title {

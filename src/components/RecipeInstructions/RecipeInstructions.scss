@@ -14,12 +14,20 @@
       gap: 24px;
       overflow: auto;
     }
+
+    @include desktop {
+      width: calc-col-width-desktop(7);
+    }
   }
   &__steps {
     display: flex;
     flex-direction: column;
-    padding: 0px;
+    padding: 2.4rem 1.6rem;
     gap: 12px;
+
+    @include tablet {
+      padding: 0;
+    }
   }
 
   &__step {
