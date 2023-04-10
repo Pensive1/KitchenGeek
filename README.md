@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Kitchen Geek
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-## Available Scripts
+Recalculating recipe servings can be time-consuming. A recipe may offer a large serving but you want less. And vice versa.
 
-In the project directory, you can run:
+Kitchen Geek helps people discover recipes based on available ingredients, resize servings, and tracks needed ingredients.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Search and discover recipes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Search for recipes by name, ingredient or through custom filters.
+- Disvover recipes through editorial suggestions.
+- Bookmark your favourite recipes in your custom cookbook.
 
-### `npm test`
+#### Adjust recipes to your liking
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Eaily recalculate serving sizes with a built-in portion calculator.
+- Convert ingredients from imperial (US) to Metric (UK).
+- View ingredients and instructions at a glance _(available on tablet and desktop only)_
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Server download and instructions are found [here](https://github.com/Pensive1/KitchenGeek-Server).
+Without the server, **_this application will not work properly_**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Client
 
-### `npm run eject`
+1. Clone or download this project _(Click the green code dropdown above)_.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  git clone https://github.com/Pensive1/KitchenGeek.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Open your terminal and install NodeJS.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  npm install npm@latest -g
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. In your terminal or code editor, browse into the folder.
 
-## Learn More
+4. Install NPM to download the necessary packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+  npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> **Note:** This project requires API details in a `.env` file. Send me an [email](mailto:racquaye89@gmail.com?subject=Kitchen%20Geek%20env%20info) for details, fill in the quotes then rename `.env.example` to `.env`.
 
-### Code Splitting
+5. Once complete, type `npm start` to start the app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+6. Enjoy 🙂
 
-### Analyzing the Bundle Size
+## Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Client:** React, JSX, Sass, Javascript
 
-### Making a Progressive Web App
+**Server:** Node, Express
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Packages**
 
-### Advanced Configuration
+- Axios
+- dotenv
+- Framer Motion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Tools**
 
-### Deployment
+- Visual Studio Code
+- Postman
+- Figma
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Roadmap
 
-### `npm run build` fails to minify
+- 🧑🏽‍🍳 Scrape recipes from third party sites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- ✨ Animate portion updates in the ingredient list
+
+- ⚡️ Interactive recipe instructions that dim/hide used recipes
+
+- 🛒 Recipe shopping list
+
+- 🥕 Recalculate a recipe portion based on a key ingredi
+
+---
+
+## Lessons Learned
+
+This project was a great opportunity for me to stretch, hone and develop new skills.
+
+### Learnings
+
+- Discovered Reacts `{children}` prop works similarly to Sass' `@content` [content block](https://sass-lang.com/documentation/at-rules/mixin#content-blocks) feature.
+
+- Spent 4 hours creating search parameter function. I later discovered React Router DOM has a built-in `useSearchParams` function that does the same thing.
+
+- Explored using variable fonts _(thanks to [Kevin Powell](https://www.youtube.com/@KevinPowell/featured))_. This saved time defining multiple fonts and helped reduce file size.
+
+- I learnt how to create custom react modals (via [Fireship](https://www.youtube.com/watch?v=SuqU904ZHA4)).
+
+- Creating functional tabbed content component (via [The Web School](https://www.youtube.com/watch?v=WkREeDy2WQ4))
+
+### Challenges
+
+I wasn't sure how to route the search results page to accept parameters after the main search query. After reading the React Router DOM documentation, I learned to use the asterisk (`*`) after `results/` to accept all routes after it.
+
+## Acknowledgements
+
+- [Spoonacular API](https://spoonacular.com/food-api) (created by [David urbansky](https://github.com/ddsky)) – _Without this API, you wouldn't discover all the recipes you know and love._
+
+- [Outfit font](https://fonts.google.com/specimen/Outfit)
+
+- [MingCute Icon Library](https://www.mingcute.com/) – Also available in [Figma](https://www.figma.com/community/file/1021803365995387735).
+
+- [Funny Doodle Pack](https://ui8.net/magika-studio-ae8379/products/funny-doodle-pack) – _Used in error states_
+- My educators [Sammy Abukmeil](https://github.com/SammyAbukmeil) and [Joe Di Trolio](https://github.com/Scribbio) for introducing me to awesome web tech, techniques, best practices, their guidance and fostering a great environment to learn and ask questions over at [BrainStation (London)](https://brainstation.io/london/software-engineering-bootcamp).
+
+- My bootcamp teaching assistant [Adam Benhrima](https://github.com/AdamBenhrima) for showing me different ways to solve code problems, guidance, constructive feedback and inspiring me with his awesome JS [one line solutions](https://betterprogramming.pub/chaining-patterns-in-javascript-df05e3030ee7) during morning challenges.
