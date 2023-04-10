@@ -12,7 +12,7 @@ const Ingredient = ({ ingredient, origServing, newServing, unit }) => {
         {ingredientPortion < 1
           ? `${parseAmount(ingredientPortion)} `
           : `${ingredientPortion} `}
-        {ingUnit ? `${ingUnit} of ` : ""}
+        {ingUnit ? `${ingUnit} ` : ""}
       </span>
       {ingredient.name}
     </li>

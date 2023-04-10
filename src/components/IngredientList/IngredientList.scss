@@ -10,8 +10,39 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .recipe {
-  &__ingredient-list {
+  &__content-tabs {
+    width: 100%;
+    height: 4.4rem;
+  }
+
+  &__tab-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    background: $primary-white;
     list-style: none;
+    margin: 0;
+    height: 100%;
+  }
+
+  &__tab-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    color: $primary-black;
+    font-weight: 300;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  &__tab-link--active {
+    border-bottom: 3px solid #b3b3b3;
+    padding-top: 3px;
+    font-weight: 500;
   }
 
   // Ingredients List
@@ -19,8 +50,9 @@ input[type="number"]::-webkit-inner-spin-button {
     &-list {
       display: flex;
       flex-direction: column;
-      padding: 0px;
+      padding: 2.4rem 1.6rem 0;
       gap: 12px;
+      list-style: none;
     }
 
     &-portion {
@@ -28,10 +60,18 @@ input[type="number"]::-webkit-inner-spin-button {
     }
   }
 
+  &__ingredients {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   //Serving Form
   &__servings {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    height: 6.4rem;
+    border-bottom: 1px solid $primary-grey-2;
+    padding: 0 1.6rem;
   }
 
   &__serving-details {
@@ -52,8 +92,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
   &__portion-amount {
     @include input-style;
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 4.4rem;
+    height: 4.4rem;
     text-align: center;
   }
 
@@ -69,11 +109,20 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: center;
     align-items: center;
     padding: 4px;
-
     width: 60px;
     height: 26px;
 
     border: 2px solid #999999;
     border-radius: 613px;
+    color: $primary-black;
+  }
+
+  // Temporary sections
+  &__temp-mob-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    @include temp-mobile;
   }
 }

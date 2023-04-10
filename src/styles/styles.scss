@@ -15,3 +15,11 @@
 .content__wrapper {
   @include responsive-wrapper;
 }
+
+.--hidden-mobile {
+  display: none;
+
+  @include tablet {
+    display: flex;
+  }
+}

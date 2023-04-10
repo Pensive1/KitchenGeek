@@ -10,6 +10,7 @@ import RecipeInstructions from "../../components/RecipeInstructions/RecipeInstru
 import IngredientList from "../../components/IngredientList/IngredientList.js";
 import IcnBookmark from "../../components/Icons/IcnBookmark.js";
 import "./RecipeDetails.scss";
+import Tabs from "../../components/Tabs/Tabs.js";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
@@ -64,7 +65,6 @@ const RecipeDetails = () => {
 
   return (
     <>
-      {/* <h1>Recipe Details</h1> */}
       {recipeDetails !== null ? (
         <>
           <div className="recipe">
@@ -82,8 +82,13 @@ const RecipeDetails = () => {
                 <IcnBookmark isBookmarked={isBookmarked} />
               </Link>
             </main>
+            <Tabs
+              ingredients={recipeDetails.extendedIngredients}
+              servings={recipeDetails.servings}
+              steps={recipeDetails.analyzedInstructions[0].steps}
+            />
 
-            <div className="content__wrapper">
+            <div className="content__wrapper --hidden-mobile">
               <IngredientList
                 ingredients={recipeDetails.extendedIngredients}
                 servings={recipeDetails.servings}

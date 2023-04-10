@@ -1,0 +1,7 @@
+@use "../../styles/partials/mixins" as *;
+.recipe {
+  &__tab-content {
+    width: 100%;
+    // @include responsive-wrapper;
+  }
+}
