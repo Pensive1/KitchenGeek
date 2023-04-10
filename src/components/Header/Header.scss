@@ -1,0 +1,25 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+@use "../../styles/partials/typography" as *;
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-bottom: 4rem;
+
+  &__links {
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  &__link {
+    display: flex;
+    gap: 0.8rem;
+  }
+  &__link > svg {
+    width: 2.4rem;
+  }
+}
