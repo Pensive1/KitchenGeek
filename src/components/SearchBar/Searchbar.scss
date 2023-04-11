@@ -6,14 +6,19 @@
 .search {
   display: flex;
   gap: 1.2rem;
-  margin-bottom: 4rem;
+  margin: 3.2rem 0;
   width: 100%;
+
+  @include tablet {
+    margin: 4rem 0;
+  }
 
   &__bar {
     @include input-style;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    width: 14rem;
     align-items: center;
     padding: 0.8rem 1.2rem 0.8rem 4rem;
     gap: 1.2rem;
@@ -35,5 +40,10 @@
     background-color: #ffffff;
     border: 1px solid #999999;
     border-radius: 0.6rem;
+  }
+
+  &__submit {
+    border-radius: 0.6rem;
+    border: 1px solid $primary-grey-2;
   }
 }
