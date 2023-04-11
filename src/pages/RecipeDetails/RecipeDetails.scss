@@ -8,13 +8,17 @@
   flex-direction: column;
   align-items: center;
 
+  @include desktop {
+    padding-top: 4rem;
+  }
   &__content-wrapper {
     @include responsive-wrapper;
     gap: $tablet-gutter;
-    padding: 3.6rem 0;
+    padding: 3.2rem 0;
 
     @include desktop {
       gap: $desktop-gutter;
+      padding: 4rem 0;
     }
   }
 
@@ -30,6 +34,7 @@
       aspect-ratio: unset;
       background-color: unset;
       gap: $desktop-gutter;
+      justify-content: center;
     }
   }
 
@@ -79,6 +84,9 @@
       width: calc-col-width-desktop(5);
       border-radius: 0.6rem;
       filter: unset;
+    }
+    &-container {
+      position: relative;
     }
   }
 

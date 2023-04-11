@@ -69,14 +69,16 @@ const RecipeDetails = () => {
         <>
           <div className="recipe">
             <main className="recipe__hero">
-              <Link className="recipe__bookmark" onClick={bookmarkRecipe}>
-                <IcnBookmark isBookmarked={isBookmarked} />
-              </Link>
-              <img
-                className="recipe__img"
-                src={recipeDetails.image}
-                alt={recipeDetails.title}
-              />
+              <div className="recipe__img-container">
+                <Link className="recipe__bookmark" onClick={bookmarkRecipe}>
+                  <IcnBookmark isBookmarked={isBookmarked} />
+                </Link>
+                <img
+                  className="recipe__img"
+                  src={recipeDetails.image}
+                  alt={recipeDetails.title}
+                />
+              </div>
               <div className="recipe__details">
                 <h3 className="recipe__title">{recipeDetails.title}</h3>
                 <p className="recipe__author">By {recipeDetails.sourceName}</p>
