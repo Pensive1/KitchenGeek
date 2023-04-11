@@ -23,7 +23,7 @@ export const getRandomRecipes = async () => {
 
 //Get recipe by search
 export const searchRecipesByName = async (recipeName) => {
-  const recipeSearchUrl = `${baseURL}/recipes/complexSearch?query=${recipeName}`;
+  const recipeSearchUrl = `${baseURL}/recipes/complexSearch?query=${recipeName}&number=24`;
 
   try {
     //return the api call
@@ -36,7 +36,7 @@ export const searchRecipesByName = async (recipeName) => {
 
 //Get recipe by cuisine
 export const searchRecipesByCuisine = async (cuisine) => {
-  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex?cuisine=${cuisine}`;
+  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex?cuisine=${cuisine}&number=24`;
 
   try {
     //return the api call
@@ -50,7 +50,7 @@ export const searchRecipesByCuisine = async (cuisine) => {
 
 //Get recipe by any parameter
 export const complexSearch = async (queryParams) => {
-  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex${queryParams}`;
+  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex${queryParams}&number=24`;
 
   try {
     //return the api call
@@ -65,7 +65,7 @@ export const complexSearch = async (queryParams) => {
 //Get recipe by ingredient
 export const searchRecipesByIngredients = async (ingredients) => {
   // const ingredientList = ingredients.join(",");
-  const ingredientRecipeUrl = `${baseURL}/recipes/findByIngredients?ingredients=${ingredients}`;
+  const ingredientRecipeUrl = `${baseURL}/recipes/findByIngredients?ingredients=${ingredients}&number=24`;
 
   try {
     //return the api call
@@ -79,7 +79,7 @@ export const searchRecipesByIngredients = async (ingredients) => {
 
 //Get recipe details (by id)
 export const getRecipeDetails = async (id) => {
-  const recipeUrl = `${baseURL}/recipes/${id}/information?includeNutrition=false`;
+  const recipeUrl = `${baseURL}/recipes/${id}/information?includeNutrition=false&number=24`;
 
   try {
     //return the api call

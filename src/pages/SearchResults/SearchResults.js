@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   searchRecipesByName,
   complexSearch,
   searchRecipesByIngredients,
 } from "../../utils/recipeCalls-paid.mjs";
-import { useEffect, useState } from "react";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
+import SearchBar from "../../components/SearchBar/Searchbar.js";
+import "./SearchResults.scss";
 
 const SearchResults = () => {
   const { searchQuery } = useParams("/:searchQuery");
@@ -14,7 +16,6 @@ const SearchResults = () => {
     ? searchParams.slice(13)
     : null;
   const [searchResults, setSearchResults] = useState(null);
-  console.log(searchResults);
 
   const getResults = async () => {
     if (searchQuery) {
@@ -49,12 +50,14 @@ const SearchResults = () => {
 
   return (
     <>
-      <h1>Search Results</h1>
-      {ingredients ? (
-        <RecipeList recipes={searchResults} />
-      ) : (
-        <RecipeList recipes={searchResults.results} />
-      )}
+      <div className="results__wrapper">
+        <SearchBar />
+        {ingredients ? (
+          <RecipeList recipes={searchResults} />
+        ) : (
+          <RecipeList recipes={searchResults.results} />
+        )}
+      </div>
     </>
   );
 };

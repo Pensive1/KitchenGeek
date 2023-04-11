@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="/" className="header__link">
+        <Link to="/" className="header__link" onClick={() => setIsActive(1)}>
           <h2 className="header__logo">Kitchen Geek</h2>
         </Link>
         <nav className="header__links">
