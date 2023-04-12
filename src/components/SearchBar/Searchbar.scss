@@ -8,10 +8,12 @@
   gap: 1.2rem;
   margin: 3.2rem 0;
   width: 100%;
-  height: 3.4rem;
+  // height: 3.4rem;
+  flex-wrap: wrap;
 
   @include tablet {
     margin: 4rem 0;
+    flex-wrap: nowrap;
   }
 
   &__bar {
@@ -44,7 +46,11 @@
   }
 
   &__submit {
-    border-radius: 0.6rem;
-    border: 1px solid $primary-grey-2;
+    @include standard-button;
+    width: 100%;
+
+    @include tablet {
+      width: 18rem;
+    }
   }
 }

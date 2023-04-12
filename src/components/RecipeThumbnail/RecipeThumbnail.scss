@@ -3,82 +3,83 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-.recipe-thumb{
+.recipe-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 8px;
+  gap: 8px;
+  overflow: hidden;
+
+  width: 21.2rem;
+  height: 179px;
+
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  @include global-shadow;
+
+  @include tablet {
+    width: 21.6rem;
+    height: 18.6rem;
+  }
+
+  &__img {
+    width: 100%;
+    height: 10.8rem;
+    object-fit: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 8px;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__txt {
+    @include txt-body;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-bottom:8px;
-    gap: 8px;
+    justify-content: space-between;
+    color: $primary-black;
+    font-weight: 600;
+    line-height: 1.76rem;
+    width: 16.4rem;
+    height: 100%;
+  }
+
+  &__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    white-space: pre-wrap;
+    line-height: 2rem;
+  }
 
-    width: 21.2rem;
-    height: 179px;
-    
-    background-color: #FFFFFF;
-    border-radius: .6rem;
-    @include global-shadow;
+  &__author {
+    @include txt-label;
+    color: $secondary-grey;
+  }
 
-    @include tablet{
-        width: 21.6rem;
-        height: 18.6rem;
-    }
+  &__actions > svg {
+    fill: $primary-black;
+    width: 1.3rem;
+    height: 1.7rem;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
 
-    &__img{
-        width: 100%;
-        height: 10.8rem;
-        object-fit: cover;
-    }
+  &__actions {
+    width: 2.4rem;
+    display: flex;
+    justify-content: center;
+  }
 
-    &__details{
-        display: flex;
-        flex-direction: row;
-        padding: 0px 8px;
-        gap: 8px;
-        width: 100%;
-        height: 100%;
-    }
-
-    &__txt{
-        @include txt-body;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: $primary-black;
-        font-weight: 600;
-        line-height: 1.76rem;
-        width: 16.4rem;
-        height: 100%;
-    }
-
-    &__title{
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        white-space: pre-wrap;
-    }
-
-    &__author{
-        @include txt-label;
-        color: $secondary-grey;
-    }
-
-    &__actions > svg{
-        fill: $primary-black;
-        width: 1.3rem;
-        height: 1.7rem;
-        position: relative;
-        z-index: 1;
-        cursor: pointer;
-    }
-
-    &__actions{
-        width: 2.4rem;
-        display: flex;
-        justify-content: center;
-    }
-
-    &__link{
-        width: inherit;
-    }
+  &__link {
+    width: inherit;
+  }
 }

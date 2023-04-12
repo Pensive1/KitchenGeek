@@ -38,6 +38,14 @@
   color: $primary-black;
 }
 
+@mixin standard-button {
+  border-radius: 0.6rem;
+  border: 1px solid #bdbdbd;
+  background-color: $primary-green;
+  color: $primary-white;
+  height: 3.4rem;
+}
+
 // TEMPORARY SECTIONS
 @mixin temp-mobile {
   @include tablet {

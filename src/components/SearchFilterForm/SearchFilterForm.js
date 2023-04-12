@@ -70,7 +70,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
   return (
     <>
       <div className="filter__content">
-        <div className="__ingred-search">
+        <div className="filter__ingred-search">
           <input
             className="filter__checkbox"
             type="checkbox"
@@ -147,6 +147,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
           </div>
         </fieldset>
         <button
+          className="filter__button"
           type="submit"
           onClick={(e) => {
             saveParamsOnClose(e);
