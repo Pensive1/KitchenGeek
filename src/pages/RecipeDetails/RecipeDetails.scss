@@ -128,5 +128,9 @@
 
   &__heading {
     @include txt-subheader;
+
+    @include tablet {
+      padding: 0 1.6rem;
+    }
   }
 }

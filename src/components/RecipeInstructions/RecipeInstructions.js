@@ -1,16 +1,24 @@
+import MissingSteps from "../placeholders/MissingSteps";
 import "./RecipeInstructions.scss";
-const RecipeInstructions = ({ steps }) => {
+const RecipeInstructions = ({ steps, recipeUrl }) => {
+  // console.log(steps);
+
+  // console.groupEnd();
   return (
     <section className="recipe__instructions">
       <h4 className="recipe__heading --hidden-mobile">Instructions</h4>
       <ol className="recipe__steps">
-        {steps.map((instruction, index) => {
-          return (
-            <li key={index} className="recipe__step">
-              {instruction.step}
-            </li>
-          );
-        })}
+        {steps ? (
+          steps.map((instruction, index) => {
+            return (
+              <li key={index} className="recipe__step">
+                {instruction.step}
+              </li>
+            );
+          })
+        ) : (
+          <MissingSteps recipeUrl={recipeUrl} />
+        )}
       </ol>
     </section>
   );

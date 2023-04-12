@@ -1,9 +1,33 @@
-.modal__container{
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+
+.modal {
+  &__container {
     background-color: white;
     border: none;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 28.8rem;
+
+    @include tablet {
+      width: 45.6rem;
+    }
+  }
+
+  &__top-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3.2rem;
+
+    @include tablet {
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__close-icon {
+    height: 2.4rem;
+    align-self: flex-end;
+  }
 }
-// .modal__container::backdrop{
-//     background-color: rgba(0, 0, 0, 0.5);
-//     backdrop-filter:blur(5px);
-// }

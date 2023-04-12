@@ -1,0 +1,49 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+@use "../../styles/partials/typography" as *;
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  gap: 2.4rem;
+  height: 100%;
+
+  & > svg {
+    height: 9rem;
+
+    @include tablet {
+      height: 14rem;
+    }
+
+    @include desktop {
+      height: 16rem;
+    }
+  }
+  &__txt {
+    text-align: center;
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 16px;
+    background-color: #8fa36a;
+    border-radius: 6px;
+    color: $primary-white;
+    transition: background-color 300ms;
+
+    &::after {
+      content: url("../../assets/icons/share_3_line.svg");
+    }
+    &:hover {
+      background-color: #798a5a;
+    }
+  }
+}

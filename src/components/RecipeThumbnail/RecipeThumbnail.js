@@ -8,7 +8,7 @@ import {
 } from "../../utils/usrActions";
 import { useState, useEffect } from "react";
 
-const RecipeThumbnail = ({ recipe }) => {
+const RecipeThumbnail = ({ recipe, loadData }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
@@ -31,7 +31,9 @@ const RecipeThumbnail = ({ recipe }) => {
 
     if (isBookmarked) {
       try {
-        removeRecipe(recipe.id);
+        await removeRecipe(recipe.id);
+        await loadData();
+
         setIsBookmarked(false);
       } catch (err) {
         console.log(err);
@@ -39,6 +41,8 @@ const RecipeThumbnail = ({ recipe }) => {
     } else if (!isBookmarked) {
       try {
         await saveRecipe(recipeData);
+        await loadData();
+
         setIsBookmarked(true);
       } catch (err) {
         console.log(err);

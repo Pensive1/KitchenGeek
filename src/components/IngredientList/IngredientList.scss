@@ -57,7 +57,7 @@ input[type="number"]::-webkit-inner-spin-button {
       padding-bottom: 3.2rem;
 
       @include tablet {
-        padding-bottom: 2.4rem;
+        padding-bottom: 0;
         width: 100%;
         padding-top: unset;
       }
@@ -92,7 +92,7 @@ input[type="number"]::-webkit-inner-spin-button {
       flex-direction: column;
       width: calc-col-width-tablet(6);
       border-radius: 0.6rem;
-      padding: 1.6rem;
+      padding-top: 1.6rem;
       display: flex;
       justify-content: space-between;
       gap: 24px;
@@ -120,9 +120,9 @@ input[type="number"]::-webkit-inner-spin-button {
       border-top: 1px solid $primary-grey-2;
       width: 100%;
       padding: 1.6rem;
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      // position: absolute;
+      // bottom: 0;
+      // left: 0;
     }
   }
 

@@ -13,7 +13,7 @@ const Cookbook = () => {
 
   useEffect(() => {
     loadCookbook();
-  });
+  }, []);
 
   return (
     <>
@@ -21,7 +21,7 @@ const Cookbook = () => {
         <div className="cookbook__wrapper">
           {recipes ? (
             <>
-              <RecipeList recipes={recipes} />
+              <RecipeList recipes={recipes} loadData={loadCookbook} />
             </>
           ) : (
             <p>Loading recipes</p>

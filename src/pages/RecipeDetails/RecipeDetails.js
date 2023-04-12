@@ -11,6 +11,7 @@ import IngredientList from "../../components/IngredientList/IngredientList.js";
 import IcnBookmark from "../../components/Icons/IcnBookmark.js";
 import "./RecipeDetails.scss";
 import Tabs from "../../components/Tabs/Tabs.js";
+import MissingSteps from "../../components/placeholders/MissingSteps.js";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
@@ -84,11 +85,20 @@ const RecipeDetails = () => {
                 <p className="recipe__author">By {recipeDetails.sourceName}</p>
               </div>
             </main>
-            <Tabs
-              ingredients={recipeDetails.extendedIngredients}
-              servings={recipeDetails.servings}
-              steps={recipeDetails.analyzedInstructions[0].steps}
-            />
+
+            {recipeDetails.analyzedInstructions === [] ? (
+              <MissingSteps recipeUrl={recipeDetails.sourceUrl} />
+            ) : (
+              <Tabs
+                ingredients={recipeDetails.extendedIngredients}
+                servings={recipeDetails.servings}
+                steps={
+                  recipeDetails.analyzedInstructions.length > 0
+                    ? recipeDetails.analyzedInstructions[0].steps
+                    : null
+                }
+              />
+            )}
 
             <div className="recipe__content-wrapper --hidden-mobile">
               <IngredientList
@@ -96,7 +106,12 @@ const RecipeDetails = () => {
                 servings={recipeDetails.servings}
               />
               <RecipeInstructions
-                steps={recipeDetails.analyzedInstructions[0].steps}
+                steps={
+                  recipeDetails.analyzedInstructions.length > 0
+                    ? recipeDetails.analyzedInstructions[0].steps
+                    : null
+                }
+                recipeUrl={recipeDetails.sourceUrl}
               />
             </div>
           </div>

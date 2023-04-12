@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import filterData from "../../data/filterOptions.json";
+import "./SearchFilterForm.scss";
+
 const { cuisines, diets, times } = filterData;
 
 const SearchFilterForm = ({ onClick, setQueryParams }) => {
@@ -67,79 +69,92 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
 
   return (
     <>
-      <h3>Filter by</h3>
-      <div className="__ingred-search">
-        <input
-          type="checkbox"
-          name="ingredients"
-          onChange={(e) => {
-            getFilterValues(e);
-            disableFieldset(e);
+      <div className="filter__content">
+        <div className="__ingred-search">
+          <input
+            className="filter__checkbox"
+            type="checkbox"
+            name="ingredients"
+            onChange={(e) => {
+              getFilterValues(e);
+              disableFieldset(e);
+            }}
+          ></input>
+          <label htmlFor="ingredients">By ingredient</label>
+        </div>
+        <fieldset className="filter__fieldset" ref={extraAttrs}>
+          <div className="filter__field">
+            <label className="filter__label">Cuisine</label>
+            <select
+              className="filter__dropdown"
+              name="cuisine"
+              onChange={(e) => getFilterValues(e)}
+              ref={cuisineDropdown}
+            >
+              <option value=""></option>
+              {cuisines.map((cuisine, index) => {
+                return (
+                  <option key={index} value={cuisine}>
+                    {cuisine}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="filter__field">
+            <label className="filter__label" htmlFor="diet">
+              Diet
+            </label>
+            <select
+              className="filter__dropdown"
+              name="diet"
+              onChange={(e) => getFilterValues(e)}
+              ref={dietDropdown}
+            >
+              <option value=""></option>
+              {diets.map((type, index) => {
+                return (
+                  <option key={index} value={type}>
+                    {type}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div className="filter__field">
+            <label className="filter__label" htmlFor="type">
+              Time
+            </label>
+            <select
+              className="filter__dropdown"
+              name="type"
+              ref={timeDropdown}
+              onChange={(e) => {
+                getFilterValues(e);
+              }}
+            >
+              <option value=""></option>
+              {times.map((timing, index) => {
+                return (
+                  <option key={index} value={timing}>
+                    {timing}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </fieldset>
+        <button
+          type="submit"
+          onClick={(e) => {
+            saveParamsOnClose(e);
           }}
-        ></input>
-        <label htmlFor="ingredients">By ingredient</label>
+        >
+          Close
+        </button>
       </div>
-
-      <fieldset className="filter__fieldset" ref={extraAttrs}>
-        <label>Cuisine</label>
-        <select
-          name="cuisine"
-          onChange={(e) => getFilterValues(e)}
-          ref={cuisineDropdown}
-        >
-          <option value=""></option>
-          {cuisines.map((cuisine, index) => {
-            return (
-              <option key={index} value={cuisine}>
-                {cuisine}
-              </option>
-            );
-          })}
-        </select>
-
-        <label htmlFor="diet">Diet</label>
-        <select
-          name="diet"
-          onChange={(e) => getFilterValues(e)}
-          ref={dietDropdown}
-        >
-          <option value=""></option>
-          {diets.map((type, index) => {
-            return (
-              <option key={index} value={type}>
-                {type}
-              </option>
-            );
-          })}
-        </select>
-
-        <label htmlFor="type">Time</label>
-        <select
-          name="type"
-          ref={timeDropdown}
-          onChange={(e) => {
-            getFilterValues(e);
-          }}
-        >
-          <option value=""></option>
-          {times.map((timing, index) => {
-            return (
-              <option key={index} value={timing}>
-                {timing}
-              </option>
-            );
-          })}
-        </select>
-      </fieldset>
-
-      <button
-        type="submit"
-        onClick={(e) => {
-          saveParamsOnClose(e);
-        }}
-      >
-        Close
-      </button>
     </>
   );
 };
