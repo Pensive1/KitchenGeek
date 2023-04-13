@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./IngredientList.scss";
-import Ingredient from "../Ingredient/Ingredient.js";
 import { Link } from "react-router-dom";
+import Ingredient from "../Ingredient/Ingredient.js";
 import IcnAdd from "../Icons/IcnAdd";
 import IcnMinus from "../Icons/IcnMinus";
+import "./IngredientList.scss";
 
 const IngredientList = ({ ingredients, servings }) => {
   const [ingServing, setIngServing] = useState(servings);

@@ -8,7 +8,13 @@ const Ingredient = ({ ingredient, origServing, newServing, unit }) => {
 
   return (
     <li className="recipe__ingredient">
-      <span className="recipe__ingredient-portion">
+      <span
+        className={
+          newServing === origServing
+            ? "recipe__ingredient-portion"
+            : "recipe__ingredient-portion recipe__ingredient-portion--altered"
+        }
+      >
         {ingredientPortion < 1
           ? `${parseAmount(ingredientPortion)} `
           : `${ingredientPortion} `}

@@ -65,6 +65,27 @@ input[type="number"]::-webkit-inner-spin-button {
 
     &-portion {
       font-weight: 600;
+      transition: color 200ms;
+
+      &--altered {
+        color: #2490cd;
+        animation-name: portionChange;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  @keyframes portionChange {
+    0% {
+      color: #2490cd;
+    }
+    50% {
+      color: #44b1f0;
+    }
+    100% {
+      color: #2490cd;
     }
   }
 
