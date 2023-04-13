@@ -86,6 +86,7 @@ const IngredientList = ({ ingredients, servings }) => {
                 onClick={() => {
                   setIngServing(servings);
                 }}
+                disabled={ingServing === servings}
               >
                 Reset
               </button>

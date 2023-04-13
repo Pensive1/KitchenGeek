@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <AnimatePresence mode="wait" initial={false} onExitComplete={() => null}>
+      <AnimatePresence mode="wait" onExitComplete={() => null}>
         <Routes>
           <Route path="/" element={<Discover />} />
           <Route path="/cookbook" element={<Cookbook />} />
