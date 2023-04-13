@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { getBookmarked } from "../../utils/usrActions";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import "./Cookbook.scss";
+import EmptyCookbook from "../../components/placeholders/EmptyCookbook";
 
 const Cookbook = () => {
   const [recipes, setRecipes] = useState(null);
@@ -28,6 +29,7 @@ const Cookbook = () => {
         <div className="cookbook__wrapper">
           {recipes ? (
             <>
+              {recipes.length === 0 && <EmptyCookbook />}
               <RecipeList recipes={recipes} loadData={loadCookbook} />
             </>
           ) : (

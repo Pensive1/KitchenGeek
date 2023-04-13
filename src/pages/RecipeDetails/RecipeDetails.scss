@@ -10,6 +10,7 @@
 
   @include desktop {
     padding-top: 4rem;
+    height: 94%;
   }
   &__content-wrapper {
     @include responsive-wrapper;
@@ -18,7 +19,8 @@
 
     @include desktop {
       gap: $desktop-gutter;
-      padding: 4rem 0;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
     }
   }
 

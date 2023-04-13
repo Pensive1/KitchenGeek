@@ -11,9 +11,11 @@
 
   @include tablet {
     padding: 4rem;
+    height: 100%;
   }
 
   &__wrapper {
     @include responsive-wrapper;
+    height: 100%;
   }
 }

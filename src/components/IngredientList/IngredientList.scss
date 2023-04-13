@@ -70,7 +70,7 @@ input[type="number"]::-webkit-inner-spin-button {
       &--altered {
         color: #2490cd;
         animation-name: portionChange;
-        animation-duration: 1s;
+        animation-duration: 2s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
       }
@@ -81,9 +81,10 @@ input[type="number"]::-webkit-inner-spin-button {
     0% {
       color: #2490cd;
     }
-    50% {
+    5% {
       color: #44b1f0;
     }
+    10%,
     100% {
       color: #2490cd;
     }
