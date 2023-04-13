@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { getBookmarked } from "../../utils/usrActions";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import "./Cookbook.scss";
@@ -17,7 +18,13 @@ const Cookbook = () => {
 
   return (
     <>
-      <div className="cookbook">
+      <motion.div
+        className="cookbook"
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="cookbook__wrapper">
           {recipes ? (
             <>
@@ -27,7 +34,7 @@ const Cookbook = () => {
             <p>Loading recipes</p>
           )}
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

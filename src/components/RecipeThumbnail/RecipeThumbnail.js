@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import IcnBookmark from "../Icons/IcnBookmark";
-import "./RecipeThumbnail.scss";
+import { useState, useEffect } from "react";
 import {
   saveRecipe,
   removeRecipe,
   checkBookmarks,
 } from "../../utils/usrActions";
-import { useState, useEffect } from "react";
+import "./RecipeThumbnail.scss";
+import IcnBookmark from "../Icons/IcnBookmark";
 
 const RecipeThumbnail = ({ recipe, loadData }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);

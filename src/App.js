@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Discover from "./pages/Discover/Discover";
 import Cookbook from "./pages/Cookbook/Cookbook";
 import SearchResults from "./pages/SearchResults/SearchResults";
@@ -12,14 +13,16 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Discover />} />
-        <Route path="/cookbook" element={<Cookbook />} />
-        <Route path="results/:searchQuery" element={<SearchResults />} />
-        <Route path="results/*" element={<SearchResults />} />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
-        <Route path="/shopping" element={<ShoppingList />} />
-      </Routes>
+      <AnimatePresence mode="wait" initial={false} onExitComplete={() => null}>
+        <Routes>
+          <Route path="/" element={<Discover />} />
+          <Route path="/cookbook" element={<Cookbook />} />
+          <Route path="results/:searchQuery" element={<SearchResults />} />
+          <Route path="results/*" element={<SearchResults />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/shopping" element={<ShoppingList />} />
+        </Routes>
+      </AnimatePresence>
       <NavBar />
     </BrowserRouter>
   );

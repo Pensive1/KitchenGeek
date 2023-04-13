@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/Backdrop";
 import SearchFilterForm from "../SearchFilterForm/SearchFilterForm";
 import closeBtn from "../../assets/icons/close.svg";
@@ -6,11 +7,15 @@ import "./Modal.scss";
 const Modal = ({ handleClose, setQueryParams }) => {
   return (
     <Backdrop onClick={handleClose}>
-      <h4>Modal</h4>
-      <dialog
+      <motion.dialog
         open
         className="modal__container"
         onClick={(e) => e.stopPropagation()}
+        key="modal"
+        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.97 }}
+        exit={{ opacity: 0, scale: 0.97, duration: 1 }}
+        transition={{ delay: 0.15, duration: 0.3, ease: "easeInOut" }}
       >
         <div className="modal__top-content">
           <h3>Filter by</h3>
@@ -25,7 +30,7 @@ const Modal = ({ handleClose, setQueryParams }) => {
           onClick={handleClose}
           setQueryParams={setQueryParams}
         />
-      </dialog>
+      </motion.dialog>
     </Backdrop>
   );
 };

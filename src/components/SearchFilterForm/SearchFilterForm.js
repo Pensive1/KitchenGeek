@@ -80,7 +80,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
               disableFieldset(e);
             }}
           ></input>
-          <label htmlFor="ingredients">By ingredient</label>
+          <label htmlFor="ingredients">Ingredient</label>
         </div>
         <fieldset className="filter__fieldset" ref={extraAttrs}>
           <div className="filter__field">
@@ -153,7 +153,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
             saveParamsOnClose(e);
           }}
         >
-          Close
+          Save and close
         </button>
       </div>
     </>

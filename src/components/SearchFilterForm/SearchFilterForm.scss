@@ -39,6 +39,10 @@
     background-color: #dde5ed;
     padding: 1rem;
     border-radius: 0.6rem;
+
+    @include tablet {
+      width: fit-content;
+    }
   }
 
   &__input {
