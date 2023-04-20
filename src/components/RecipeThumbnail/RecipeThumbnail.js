@@ -8,7 +8,7 @@ import {
 import "./RecipeThumbnail.scss";
 import IcnBookmark from "../Icons/IcnBookmark";
 
-const RecipeThumbnail = ({ recipe, loadData }) => {
+const RecipeThumbnail = ({ recipe, loadData = null }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
@@ -32,7 +32,9 @@ const RecipeThumbnail = ({ recipe, loadData }) => {
     if (isBookmarked) {
       try {
         await removeRecipe(recipe.id);
-        await loadData();
+        if (loadData) {
+          await loadData();
+        }
 
         setIsBookmarked(false);
       } catch (err) {
@@ -41,7 +43,9 @@ const RecipeThumbnail = ({ recipe, loadData }) => {
     } else if (!isBookmarked) {
       try {
         await saveRecipe(recipeData);
-        await loadData();
+        if (loadData) {
+          await loadData();
+        }
 
         setIsBookmarked(true);
       } catch (err) {
