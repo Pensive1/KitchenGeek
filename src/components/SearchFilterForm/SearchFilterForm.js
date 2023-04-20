@@ -60,7 +60,6 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
 
       Object.keys(valueSet).forEach((key) => delete valueSet[key]);
       valueSet[checkBxName] = "";
-      // console.log(valueSet);
       setFilterValues(valueSet);
     } else {
       extraAttrs.current.removeAttribute("disabled");
@@ -146,6 +145,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
             </select>
           </div>
         </fieldset>
+
         <button
           className="filter__button"
           type="submit"

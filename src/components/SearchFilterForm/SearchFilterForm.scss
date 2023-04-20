@@ -18,6 +18,11 @@
     &:disabled {
       color: $primary-grey;
     }
+
+    @include desktop {
+      flex-direction: row;
+      gap: 1.6rem;
+    }
   }
 
   &__field {
@@ -30,18 +35,29 @@
 
   &__label {
     @include txt-label;
+
+    @include desktop {
+      display: none;
+    }
   }
 
   &__ingred-search {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    background-color: #dde5ed;
-    padding: 1rem;
+    background-color: $primary-white;
+    padding: 1.2rem;
     border-radius: 0.6rem;
 
     @include tablet {
       width: fit-content;
+    }
+
+    @include desktop {
+      @include input-style;
+      height: 3.4rem;
+      padding: 0 1rem;
+      font-size: 1.4rem;
     }
   }
 
