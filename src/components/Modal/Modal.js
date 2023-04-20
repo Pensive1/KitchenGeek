@@ -14,7 +14,7 @@ const Modal = ({ handleClose, setQueryParams }) => {
         key="modal"
         animate={{ opacity: 1, scale: 1 }}
         initial={{ opacity: 0, scale: 0.97 }}
-        exit={{ opacity: 0, scale: 0.97, duration: 1 }}
+        exit={{ opacity: 0, scale: 0.97, duration: 7 }}
         transition={{ delay: 0.15, duration: 0.3, ease: "easeInOut" }}
       >
         <div className="modal__top-content">

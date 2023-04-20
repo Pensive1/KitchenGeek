@@ -108,7 +108,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
   &__ingredients {
     display: flex;
-    // flex-direction: column-reverse;
+    background-color: $primary-white;
 
     @include tablet {
       flex-direction: column;
@@ -142,9 +142,13 @@ input[type="number"]::-webkit-inner-spin-button {
       border-top: 1px solid $primary-grey-2;
       width: 100%;
       padding: 1.6rem;
-      // position: absolute;
-      // bottom: 0;
-      // left: 0;
+      gap: 7.6rem;
+    }
+
+    & > .recipe__convert {
+      @include tablet {
+        display: none;
+      }
     }
   }
 
@@ -154,6 +158,11 @@ input[type="number"]::-webkit-inner-spin-button {
     align-items: center;
     padding: 0px;
     gap: 16px;
+
+    @include tablet {
+      flex-grow: 1;
+      justify-content: space-between;
+    }
   }
 
   &__portion-controls {
@@ -169,6 +178,8 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 4.4rem;
     height: 4.4rem;
     text-align: center;
+    font-weight: 600;
+    font-size: 1.6rem;
   }
 
   &__portion-btn {
@@ -186,7 +197,7 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 60px;
     height: 26px;
 
-    border: 2px solid #999999;
+    border: 1px solid #d9d9d9;
     border-radius: 613px;
     color: $primary-black;
   }
@@ -199,5 +210,6 @@ input[type="number"]::-webkit-inner-spin-button {
     align-items: center;
     width: 100%;
     padding-bottom: 7.2rem;
+    background-color: $primary-white;
   }
 }

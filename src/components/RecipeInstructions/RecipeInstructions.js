@@ -6,7 +6,9 @@ const RecipeInstructions = ({ steps, recipeUrl }) => {
   // console.groupEnd();
   return (
     <section className="recipe__instructions">
-      <h4 className="recipe__heading --hidden-mobile">Instructions</h4>
+      <h4 className="recipe__heading recipe__heading--instruction --hidden-mobile">
+        Instructions
+      </h4>
       <ol className="recipe__steps">
         {steps ? (
           steps.map((instruction, index) => {

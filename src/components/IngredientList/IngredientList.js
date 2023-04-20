@@ -32,7 +32,13 @@ const IngredientList = ({ ingredients, servings }) => {
   return (
     <>
       <section className="recipe__ingredients">
-        <h4 className="recipe__heading --hidden-mobile">Ingredients</h4>
+        <div className="recipe__heading-container">
+          <h4 className="recipe__heading">Ingredients</h4>
+          <Link className="recipe__convert" onClick={updateUnit}>
+            UK
+          </Link>
+        </div>
+
         <div className="recipe__ingredient-details">
           <ul className="recipe__ingredient-list">
             {ingredients.map((ingredient, index) => {

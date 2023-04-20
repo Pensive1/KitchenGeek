@@ -59,8 +59,8 @@
     }
 
     @include desktop {
-      top: 1.5rem;
-      left: 35rem;
+      top: 1.6rem;
+      right: 1.6rem;
     }
   }
 
@@ -122,17 +122,40 @@
 
   &__title {
     @include txt-header;
+
+    @include desktop {
+      color: $primary-alt-blue;
+    }
   }
 
   &__author {
     @include txt-body;
+
+    @include desktop {
+      color: $primary-grey-3;
+    }
   }
 
   &__heading {
     @include txt-subheader;
+    color: $primary-blue;
 
     @include tablet {
       padding: 0 1.6rem;
+    }
+
+    &--instruction {
+      padding: 0;
+    }
+
+    &-container {
+      display: none;
+
+      @include tablet {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 1.6rem;
+      }
     }
   }
 }

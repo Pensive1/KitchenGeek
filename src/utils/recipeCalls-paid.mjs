@@ -23,7 +23,7 @@ export const getRandomRecipes = async () => {
 
 //Get recipe by search
 export const searchRecipesByName = async (recipeName) => {
-  const recipeSearchUrl = `${baseURL}/recipes/complexSearch?query=${recipeName}&number=24`;
+  const recipeSearchUrl = `${baseURL}/recipes/complexSearch?query=${recipeName}&number=64`;
 
   try {
     //return the api call
