@@ -4,7 +4,7 @@ import SearchFilterForm from "../SearchFilterForm/SearchFilterForm";
 import closeBtn from "../../assets/icons/close.svg";
 import "./Modal.scss";
 
-const Modal = ({ handleClose, setQueryParams }) => {
+const Modal = ({ handleClose, filters }) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.dialog
@@ -26,10 +26,7 @@ const Modal = ({ handleClose, setQueryParams }) => {
             onClick={handleClose}
           />
         </div>
-        <SearchFilterForm
-          onClick={handleClose}
-          setQueryParams={setQueryParams}
-        />
+        <SearchFilterForm onClick={handleClose} filters={filters} />
       </motion.dialog>
     </Backdrop>
   );

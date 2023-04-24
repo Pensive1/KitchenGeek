@@ -4,7 +4,7 @@ import "./SearchFilterForm.scss";
 
 const { cuisines, diets, times } = filterData;
 
-const SearchFilterForm = ({ onClick, setQueryParams }) => {
+const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
   const [filterValues, setFilterValues] = useState({});
   const extraAttrs = useRef(null);
   const cuisineDropdown = useRef(null);
@@ -41,7 +41,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
   const saveParamsOnClose = (e) => {
     e.preventDefault();
     if (Object.keys(filterValues).length > 0) {
-      setQueryParams(parseParams(filterValues));
+      setQueryParams(parseParams());
     }
     onClick();
   };
@@ -75,8 +75,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
             type="checkbox"
             name="ingredients"
             onChange={(e) => {
-              getFilterValues(e);
-              disableFieldset(e);
+              filters.setFilterIngredient(e.target.checked);
             }}
           ></input>
           <label htmlFor="ingredients">Ingredient</label>
@@ -87,7 +86,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
             <select
               className="filter__dropdown"
               name="cuisine"
-              onChange={(e) => getFilterValues(e)}
+              onChange={(e) => filters.setFilterCuisine(e.target.value)}
               ref={cuisineDropdown}
             >
               <option value=""></option>
@@ -108,7 +107,8 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
             <select
               className="filter__dropdown"
               name="diet"
-              onChange={(e) => getFilterValues(e)}
+              onChange={(e) => filters.setFilterDiet(e.target.value)}
+              value={filters.FilterDiet}
               ref={dietDropdown}
             >
               <option value=""></option>
@@ -131,7 +131,7 @@ const SearchFilterForm = ({ onClick, setQueryParams }) => {
               name="type"
               ref={timeDropdown}
               onChange={(e) => {
-                getFilterValues(e);
+                filters.setFilterTime(e.target.value);
               }}
             >
               <option value=""></option>
