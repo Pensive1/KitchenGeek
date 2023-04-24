@@ -8,8 +8,10 @@
     @include responsive-wrapper;
     // padding-top: 3.2rem;
 
-    @include tablet {
-      //   padding-top: 4rem;
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

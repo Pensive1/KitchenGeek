@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import filterData from "../../data/filterOptions.json";
 import Modal from "../../components/Modal/Modal.js";
 import IcnFilter from "../Icons/IcnFilter.js";
@@ -9,14 +9,12 @@ const { cuisines, diets, times } = filterData;
 
 const Searchbar = () => {
   const navigate = useNavigate();
+  const searchForm = useRef(null);
   const [query, setQuery] = useState(null);
-
   const [filterIngredient, setFilterIngredient] = useState(false);
   const [filterCuisine, setFilterCuisine] = useState("");
   const [filterDiet, setFilterDiet] = useState("");
   const [filterTime, setFilterTime] = useState("");
-
-  const searchForm = useRef(null);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -30,54 +28,10 @@ const Searchbar = () => {
   };
   const open = () => setModalOpen(true);
 
-  // Disable fieldset (when ingredient checked)
-  // const disableFieldset = () => {
-  //   const valueSet = { ...filterValues };
-
-  //   if (filterIngredient === true) {
-
-  //     clearField(cuisineDropdown, setFilterCuisine);
-  //     clearField(dietDropdown, setFilterDiet);
-  //     clearField(timeDropdown, setFilterTime);
-
-  //     Object.keys(valueSet).forEach((key) => delete valueSet[key]);
-  //     valueSet.ingredients = filterIngredient;
-  //     setFilterValues(valueSet);
-  //   } else {
-  //     valueSet.ingredients = filterIngredient;
-  //     setFilterValues(valueSet);
-  //   }
-  // };
-
-  //Track filters
-  // const getFilterValues = () => {
-  //   const trackedFilters = [
-  //     filterIngredient,
-  //     filterCuisine,
-  //     filterDiet,
-  //     filterTime,
-  //   ];
-  //   const valueSet = { ...filterValues };
-  //   // console.log(valueSet);
-
-  //   trackedFilters.map((filterObj) => {
-  //     Object.entries(filterObj).forEach(([fKey, fValue]) => {
-  //       if (fValue === {} || fValue === false || fValue === "") {
-  //         delete valueSet[fKey];
-  //       } else {
-  //         valueSet[fKey] = fValue;
-  //       }
-  //     });
-  //     // console.log(valueSet);
-
-  //     // console.log(filterVal);
-  //   });
-  // };
-
   //Serialise parameters
   const parseParams = (filterObj) => {
     const paramStr = `${Object.entries(filterObj)
-      .map((param, paramValue) => param.join("="))
+      .map((param) => param.join("="))
       .join("&")}`;
     return paramStr;
   };
@@ -105,9 +59,6 @@ const Searchbar = () => {
 
     const searchParamsObj = Object.fromEntries(searchParams);
 
-    console.log(searchParamsObj);
-
-    // // filter search navigation here
     // //Search query only
     if (
       Object.entries(searchParamsObj).length === 1 &&
@@ -131,20 +82,6 @@ const Searchbar = () => {
     ) {
       navigate(`/results?${encodeURI(parseParams(searchParamsObj))}`);
     }
-
-    // switch (searchParamsObj) {
-    //   //if no params
-    //   case Object.entries(searchParamsObj).length === 1 &&
-    //     Object.hasOwn(searchParamsObj, "mainQuery"):
-    //     navigate(`/results/${searchParamsObj.mainQuery}`);
-    //     break;
-    //   case "?ingredients=":
-    //     navigate(`/results${queryParams}${query}`);
-    //     break;
-    // default:
-    //   navigate(`/results${queryParams}${query ? `&query=${query}` : ""}`);
-    //   break;
-    // }
   };
 
   return (

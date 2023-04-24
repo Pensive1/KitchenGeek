@@ -1,71 +1,9 @@
-import { useState, useRef } from "react";
 import filterData from "../../data/filterOptions.json";
 import "./SearchFilterForm.scss";
 
 const { cuisines, diets, times } = filterData;
 
-const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
-  const [filterValues, setFilterValues] = useState({});
-  const extraAttrs = useRef(null);
-  const cuisineDropdown = useRef(null);
-  const dietDropdown = useRef(null);
-  const timeDropdown = useRef(null);
-
-  const getFilterValues = (e) => {
-    const field = e.target.name;
-    const value = e.target.value;
-    const checked = e.target.checked;
-    const valueSet = { ...filterValues };
-
-    //Store params in state
-    if (value === "on" && checked) {
-      setFilterValues({ ...filterValues, [field]: "" });
-    } else if (value === "on" && !checked) {
-      delete valueSet[field];
-      setFilterValues(valueSet);
-    } else if (value !== "") {
-      setFilterValues({ ...filterValues, [field]: value });
-    } else if (value === "") {
-      delete valueSet[field];
-      setFilterValues(valueSet);
-    }
-  };
-
-  const parseParams = () => {
-    const paramStr = `?${Object.entries(filterValues)
-      .map((param) => param.join("="))
-      .join("&")}`;
-    return paramStr;
-  };
-
-  const saveParamsOnClose = (e) => {
-    e.preventDefault();
-    if (Object.keys(filterValues).length > 0) {
-      setQueryParams(parseParams());
-    }
-    onClick();
-  };
-
-  const disableFieldset = (e) => {
-    const checkBxName = e.target.name;
-    const checked = e.target.checked;
-
-    if (checked) {
-      const valueSet = { ...filterValues };
-      extraAttrs.current.setAttribute("disabled", null);
-
-      cuisineDropdown.current.value = "";
-      dietDropdown.current.value = "";
-      timeDropdown.current.value = "";
-
-      Object.keys(valueSet).forEach((key) => delete valueSet[key]);
-      valueSet[checkBxName] = "";
-      setFilterValues(valueSet);
-    } else {
-      extraAttrs.current.removeAttribute("disabled");
-    }
-  };
-
+const SearchFilterForm = ({ onClick, filters }) => {
   return (
     <>
       <div className="filter__content">
@@ -83,7 +21,6 @@ const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
         </div>
         <fieldset
           className="filter__fieldset"
-          ref={extraAttrs}
           disabled={filters.filterIngredient}
         >
           <div className="filter__field">
@@ -93,7 +30,6 @@ const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
               name="cuisine"
               value={filters.filterCuisine}
               onChange={(e) => filters.setFilterCuisine(e.target.value)}
-              ref={cuisineDropdown}
             >
               <option value=""></option>
               {cuisines.map((cuisine, index) => {
@@ -115,7 +51,6 @@ const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
               name="diet"
               value={filters.filterDiet}
               onChange={(e) => filters.setFilterDiet(e.target.value)}
-              ref={dietDropdown}
             >
               <option value=""></option>
               {diets.map((type, index) => {
@@ -135,7 +70,6 @@ const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
             <select
               className="filter__dropdown"
               name="type"
-              ref={timeDropdown}
               value={filters.filterTime}
               onChange={(e) => {
                 filters.setFilterTime(e.target.value);
@@ -153,14 +87,8 @@ const SearchFilterForm = ({ onClick, setQueryParams, filters }) => {
           </div>
         </fieldset>
 
-        <button
-          className="filter__button"
-          type="submit"
-          onClick={(e) => {
-            saveParamsOnClose(e);
-          }}
-        >
-          Save and close
+        <button className="filter__button" type="submit" onClick={onClick}>
+          Close
         </button>
       </div>
     </>
