@@ -5,8 +5,9 @@ import {
   removeRecipe,
   checkBookmarks,
 } from "../../utils/usrActions";
-import "./RecipeThumbnail.scss";
 import IcnBookmark from "../Icons/IcnBookmark";
+import imgPlaceholder from "../../assets/placeholder/thumbnail_placeholder.svg";
+import "./RecipeThumbnail.scss";
 
 const RecipeThumbnail = ({ recipe, loadData = null }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -63,7 +64,7 @@ const RecipeThumbnail = ({ recipe, loadData = null }) => {
       <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
         <img
           className="recipe-thumb__img"
-          src={recipe.image}
+          src={recipe.image ? recipe.image : imgPlaceholder}
           alt={recipe.title}
         />
       </Link>

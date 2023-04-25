@@ -14,6 +14,7 @@ import "./RecipeDetails.scss";
 import Tabs from "../../components/Tabs/Tabs.js";
 import MissingSteps from "../../components/placeholders/MissingSteps.js";
 import LoadingRecipe from "../../components/placeholders/LoadingRecipe.js";
+import imgPlaceholder from "../../assets/placeholder/thumbnail_placeholder.svg";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
@@ -84,7 +85,9 @@ const RecipeDetails = () => {
                 </Link>
                 <img
                   className="recipe__img"
-                  src={recipeDetails.image}
+                  src={
+                    recipeDetails.image ? recipeDetails.image : imgPlaceholder
+                  }
                   alt={recipeDetails.title}
                 />
               </div>
