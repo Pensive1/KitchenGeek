@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
+import { motion } from "framer-motion";
 import {
   saveRecipe,
   removeRecipe,
@@ -12,6 +13,7 @@ import IcnBookmark from "../../components/Icons/IcnBookmark.js";
 import "./RecipeDetails.scss";
 import Tabs from "../../components/Tabs/Tabs.js";
 import MissingSteps from "../../components/placeholders/MissingSteps.js";
+import LoadingRecipe from "../../components/placeholders/LoadingRecipe.js";
 
 const RecipeDetails = () => {
   const { id } = useParams("/:id");
@@ -68,7 +70,13 @@ const RecipeDetails = () => {
     <>
       {recipeDetails !== null ? (
         <>
-          <div className="recipe">
+          <motion.div
+            className="recipe"
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <main className="recipe__hero">
               <div className="recipe__img-container">
                 <Link className="recipe__bookmark" onClick={bookmarkRecipe}>
@@ -114,10 +122,10 @@ const RecipeDetails = () => {
                 recipeUrl={recipeDetails.sourceUrl}
               />
             </div>
-          </div>
+          </motion.div>
         </>
       ) : (
-        <p>Loading recipe details</p>
+        <LoadingRecipe />
       )}
     </>
   );

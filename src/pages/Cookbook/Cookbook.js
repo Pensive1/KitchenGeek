@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getBookmarked } from "../../utils/usrActions";
 import RecipeList from "../../components/RecipeList/RecipeList";
-import "./Cookbook.scss";
 import EmptyCookbook from "../../components/placeholders/EmptyCookbook";
+import LoadingRecipes from "../../components/placeholders/LoadingRecipes";
+import "./Cookbook.scss";
 
 const Cookbook = () => {
   const [recipes, setRecipes] = useState(null);
@@ -33,7 +34,7 @@ const Cookbook = () => {
               <RecipeList recipes={recipes} loadData={loadCookbook} />
             </>
           ) : (
-            <p>Loading recipes</p>
+            <LoadingRecipes />
           )}
         </div>
       </motion.div>

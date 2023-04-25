@@ -19,8 +19,7 @@
 
     @include desktop {
       gap: $desktop-gutter;
-      padding-top: 4rem;
-      padding-bottom: 2rem;
+      padding: 4rem 0;
     }
   }
 

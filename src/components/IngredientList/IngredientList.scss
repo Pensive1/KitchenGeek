@@ -98,7 +98,6 @@ input[type="number"]::-webkit-inner-spin-button {
     @include tablet {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: flex-start;
       padding: 0px;
       gap: 24px;
@@ -119,6 +118,7 @@ input[type="number"]::-webkit-inner-spin-button {
       justify-content: space-between;
       gap: 24px;
       position: sticky;
+      height: fit-content;
       max-height: 80vh;
       top: 10rem;
       @include global-shadow;

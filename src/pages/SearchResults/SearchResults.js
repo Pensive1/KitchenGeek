@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   searchRecipesByName,
@@ -47,7 +47,6 @@ const SearchResults = () => {
   if (searchResults === null) {
     return <p>Page not found</p>;
   }
-
   return (
     <>
       <div className="results__wrapper">

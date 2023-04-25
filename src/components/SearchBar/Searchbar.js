@@ -44,19 +44,6 @@ const Searchbar = () => {
       ([key, value]) => value !== ""
     );
 
-    // If array contains "ingredients"
-    const ingredientsIndex = searchParams.findIndex(
-      ([param, value]) => param === "ingredients"
-    );
-
-    // Bring to the start
-    if (ingredientsIndex > -1) {
-      [searchParams[0], searchParams[ingredientsIndex]] = [
-        searchParams[ingredientsIndex],
-        searchParams[0],
-      ];
-    }
-
     const searchParamsObj = Object.fromEntries(searchParams);
 
     // //Search query only
@@ -77,7 +64,7 @@ const Searchbar = () => {
 
     // // Complex search
     if (
-      Object.entries(searchParamsObj).length > 1 &&
+      Object.entries(searchParamsObj).length > 0 &&
       !Object.hasOwn(searchParamsObj, "ingredients")
     ) {
       navigate(`/results?${encodeURI(parseParams(searchParamsObj))}`);
