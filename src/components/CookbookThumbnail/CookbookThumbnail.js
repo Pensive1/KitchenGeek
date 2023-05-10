@@ -21,6 +21,7 @@ const CookbookThumbnail = ({ recipe, loadData = null }) => {
     }
   };
 
+  // Refactor user id for OAuth
   const bookmarkRecipe = async () => {
     const recipeData = {
       user_id: 1,
