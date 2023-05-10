@@ -13,7 +13,7 @@ const CookbookThumbnail = ({ recipe, loadData = null }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
-    const bmStatus = await checkBookmarks(recipe.id);
+    const bmStatus = await checkBookmarks(recipe.recipe_id);
     if (bmStatus) {
       return setIsBookmarked(true);
     } else {
@@ -23,16 +23,16 @@ const CookbookThumbnail = ({ recipe, loadData = null }) => {
 
   const bookmarkRecipe = async () => {
     const recipeData = {
-      id: recipe.id,
-      title: recipe.title,
-      sourceName: recipe.sourceName,
-      image: recipe.image,
-      timestamp: Date.now(),
+      user_id: 1,
+      recipe_id: recipe.recipe_id,
+      recipe_title: recipe.recipe_title,
+      recipe_author: recipe.recipe_author,
+      recipe_image: recipe.recipe_image,
     };
 
     if (isBookmarked) {
       try {
-        await removeRecipe(recipe.id);
+        await removeRecipe(recipe.recipe_id);
         if (loadData) {
           await loadData();
         }

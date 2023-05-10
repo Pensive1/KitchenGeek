@@ -43,11 +43,13 @@ const RecipeDetails = () => {
   const bookmarkRecipe = async (e) => {
     e.preventDefault();
 
+    // Refactor user id for OAuth
     const recipeData = {
-      id: recipeDetails.id,
-      title: recipeDetails.title,
-      sourceName: recipeDetails.sourceName,
-      image: recipeDetails.image,
+      user_id: 1,
+      recipe_id: recipeDetails.id,
+      recipe_title: recipeDetails.title,
+      recipe_author: recipeDetails.sourceName,
+      recipe_image: recipeDetails.image,
     };
 
     if (isBookmarked) {

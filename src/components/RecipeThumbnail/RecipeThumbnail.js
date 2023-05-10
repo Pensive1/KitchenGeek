@@ -9,7 +9,7 @@ import IcnBookmark from "../Icons/IcnBookmark";
 import imgPlaceholder from "../../assets/placeholder/thumbnail_placeholder.svg";
 import "./RecipeThumbnail.scss";
 
-const RecipeThumbnail = ({ recipe, loadData = null }) => {
+const RecipeThumbnail = ({ recipe }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
@@ -23,20 +23,16 @@ const RecipeThumbnail = ({ recipe, loadData = null }) => {
 
   const bookmarkRecipe = async () => {
     const recipeData = {
-      id: recipe.id,
-      title: recipe.title,
-      sourceName: recipe.sourceName,
-      image: recipe.image,
-      timestamp: Date.now(),
+      user_id: 1,
+      recipe_id: recipe.id,
+      recipe_title: recipe.title,
+      recipe_author: recipe.sourceName,
+      recipe_image: recipe.image,
     };
 
     if (isBookmarked) {
       try {
         await removeRecipe(recipe.id);
-        if (loadData) {
-          await loadData();
-        }
-
         setIsBookmarked(false);
       } catch (err) {
         console.log(err);
@@ -44,10 +40,6 @@ const RecipeThumbnail = ({ recipe, loadData = null }) => {
     } else if (!isBookmarked) {
       try {
         await saveRecipe(recipeData);
-        if (loadData) {
-          await loadData();
-        }
-
         setIsBookmarked(true);
       } catch (err) {
         console.log(err);
