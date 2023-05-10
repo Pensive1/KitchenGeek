@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import "./RecipeList.scss";
 import RecipeThumbnail from "../../components/RecipeThumbnail/RecipeThumbnail";
+import CookbookThumbnail from "../CookbookThumbnail/CookbookThumbnail";
+import { useMatch } from "react-router-dom";
 
 const RecipeList = ({ recipes, loadData }) => {
+  const pageIscookbook = useMatch("/cookbook");
+
   return (
     <motion.section
       className="recipe__list"
@@ -15,7 +19,13 @@ const RecipeList = ({ recipes, loadData }) => {
         <p>No bookmarked recipes</p>
       ) : (
         recipes.map((recipe) => {
-          return (
+          return pageIscookbook ? (
+            <CookbookThumbnail
+              recipe={recipe}
+              key={recipe.id}
+              loadData={loadData}
+            />
+          ) : (
             <RecipeThumbnail
               recipe={recipe}
               key={recipe.id}
