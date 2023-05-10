@@ -7,13 +7,13 @@ import {
 } from "../../utils/usrActions";
 import IcnBookmark from "../Icons/IcnBookmark";
 import imgPlaceholder from "../../assets/placeholder/thumbnail_placeholder.svg";
-import "./RecipeThumbnail.scss";
+import "../RecipeThumbnail/RecipeThumbnail.scss";
 
-const RecipeThumbnail = ({ recipe }) => {
+const CookbookThumbnail = ({ recipe, loadData = null }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
-    const bmStatus = await checkBookmarks(recipe.id);
+    const bmStatus = await checkBookmarks(recipe.recipe_id);
     if (bmStatus) {
       return setIsBookmarked(true);
     } else {
@@ -25,15 +25,19 @@ const RecipeThumbnail = ({ recipe }) => {
   const bookmarkRecipe = async () => {
     const recipeData = {
       user_id: 1,
-      recipe_id: recipe.id,
-      recipe_title: recipe.title,
-      recipe_author: recipe.sourceName,
-      recipe_image: recipe.image,
+      recipe_id: recipe.recipe_id,
+      recipe_title: recipe.recipe_title,
+      recipe_author: recipe.recipe_author,
+      recipe_image: recipe.recipe_image,
     };
 
     if (isBookmarked) {
       try {
-        await removeRecipe(recipe.id);
+        await removeRecipe(recipe.recipe_id);
+        if (loadData) {
+          await loadData();
+        }
+
         setIsBookmarked(false);
       } catch (err) {
         console.log(err);
@@ -41,6 +45,10 @@ const RecipeThumbnail = ({ recipe }) => {
     } else if (!isBookmarked) {
       try {
         await saveRecipe(recipeData);
+        if (loadData) {
+          await loadData();
+        }
+
         setIsBookmarked(true);
       } catch (err) {
         console.log(err);
@@ -54,18 +62,18 @@ const RecipeThumbnail = ({ recipe }) => {
 
   return (
     <article className="recipe-thumb">
-      <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
+      <Link to={`/recipe/${recipe.recipe_id}`} className="recipe-thumb__link">
         <img
           className="recipe-thumb__img"
-          src={recipe.image ? recipe.image : imgPlaceholder}
-          alt={recipe.title}
+          src={recipe.recipe_image ? recipe.recipe_image : imgPlaceholder}
+          alt={recipe.recipe_title}
         />
       </Link>
       <div className="recipe-thumb__details">
-        <Link to={`/recipe/${recipe.id}`} className="recipe-thumb__link">
+        <Link to={`/recipe/${recipe.recipe_id}`} className="recipe-thumb__link">
           <div className="recipe-thumb__txt">
-            <p className="recipe-thumb__title">{recipe.title}</p>
-            <p className="recipe-thumb__author">{recipe.sourceName}</p>
+            <p className="recipe-thumb__title">{recipe.recipe_title}</p>
+            <p className="recipe-thumb__author">{recipe.recipe_author}</p>
           </div>
         </Link>
         <div
@@ -82,4 +90,4 @@ const RecipeThumbnail = ({ recipe }) => {
   );
 };
 
-export default RecipeThumbnail;
+export default CookbookThumbnail;
