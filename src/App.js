@@ -10,9 +10,11 @@ import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import Auth from "./components/Auth/Auth";
 
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [authTitle, setAuthTitle] = useState("Login");
   const closeLoginModal = () => setShowLoginModal(false);
 
   return (
@@ -22,8 +24,8 @@ function App() {
         isLoginModalActive={showLoginModal}
       />
       {showLoginModal && (
-        <Modal handleClose={closeLoginModal} title={"Login"}>
-          <p>Login form goes here</p>
+        <Modal handleClose={closeLoginModal} title={authTitle}>
+          <Auth setAuthTitle={setAuthTitle} />
         </Modal>
       )}
 

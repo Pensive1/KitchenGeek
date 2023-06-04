@@ -1,18 +1,21 @@
-const Auth = () => {
+import { useEffect, useState } from "react";
+import AuthLogin from "./AuthLogin";
+import AuthRegister from "./AuthRegister";
+
+const Auth = ({ setAuthTitle }) => {
+  const [authAction, setAuthAction] = useState(true);
+
+  useEffect(() => {
+    authAction ? setAuthTitle("Login") : setAuthTitle("Register");
+  }, [authAction]);
   return (
-    <form>
-      <h3>Sign in</h3>
-
-      <div>
-        <label htmlFor="usrEmail"></label>
-        <input type="email" name="usrEmail" id="usrEmail" />
-      </div>
-
-      <div>
-        <label htmlFor="usrPassword"></label>
-        <input type="password" name="usrPassword" id="usrPassword" />
-      </div>
-    </form>
+    <>
+      {authAction ? (
+        <AuthLogin setAuthAction={setAuthAction} />
+      ) : (
+        <AuthRegister setAuthAction={setAuthAction} />
+      )}
+    </>
   );
 };
 
