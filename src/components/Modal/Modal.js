@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop/Backdrop";
-import SearchFilterForm from "../SearchFilterForm/SearchFilterForm";
 import closeBtn from "../../assets/icons/close.svg";
 import "./Modal.scss";
 
-const Modal = ({ handleClose, filters }) => {
+const Modal = ({ handleClose, title, children }) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.dialog
@@ -18,7 +17,7 @@ const Modal = ({ handleClose, filters }) => {
         transition={{ delay: 0.15, duration: 0.3, ease: "easeInOut" }}
       >
         <div className="modal__top-content">
-          <h3>Filter by</h3>
+          <h3>{title}</h3>
           <img
             className="modal__close-icon"
             src={closeBtn}
@@ -26,7 +25,7 @@ const Modal = ({ handleClose, filters }) => {
             onClick={handleClose}
           />
         </div>
-        <SearchFilterForm onClick={handleClose} filters={filters} />
+        {children}
       </motion.dialog>
     </Backdrop>
   );

@@ -96,7 +96,7 @@ This project was a great opportunity for me to stretch, hone and develop new ski
 
 ### Learnings
 
-- Discovered Reacts `{children}` prop works similarly to Sass' `@content` [content block](https://sass-lang.com/documentation/at-rules/mixin#content-blocks) feature.
+- Discovered React's `{children}` prop works similarly to Sass' `@content` [content block](https://sass-lang.com/documentation/at-rules/mixin#content-blocks) feature.
 
 - Spent 4 hours creating search parameter function. I later discovered React Router DOM has a built-in `useSearchParams` function that does the same thing.
 

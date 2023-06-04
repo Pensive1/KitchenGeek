@@ -12,6 +12,7 @@ const SearchFilterForm = ({ onClick, filters }) => {
             className="filter__checkbox"
             type="checkbox"
             name="ingredients"
+            id="ingredients"
             checked={filters.filterIngredient}
             onChange={(e) => {
               filters.setFilterIngredient(e.target.checked);
@@ -24,10 +25,13 @@ const SearchFilterForm = ({ onClick, filters }) => {
           disabled={filters.filterIngredient}
         >
           <div className="filter__field">
-            <label className="filter__label">Cuisine</label>
+            <label className="filter__label" htmlFor="cuisine">
+              Cuisine
+            </label>
             <select
               className="filter__dropdown"
               name="cuisine"
+              id="cuisine"
               value={filters.filterCuisine}
               onChange={(e) => filters.setFilterCuisine(e.target.value)}
             >
@@ -49,6 +53,7 @@ const SearchFilterForm = ({ onClick, filters }) => {
             <select
               className="filter__dropdown"
               name="diet"
+              id="diet"
               value={filters.filterDiet}
               onChange={(e) => filters.setFilterDiet(e.target.value)}
             >
@@ -70,6 +75,7 @@ const SearchFilterForm = ({ onClick, filters }) => {
             <select
               className="filter__dropdown"
               name="type"
+              id="type"
               value={filters.filterTime}
               onChange={(e) => {
                 filters.setFilterTime(e.target.value);

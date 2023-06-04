@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import filterData from "../../data/filterOptions.json";
-import Modal from "../../components/Modal/Modal.js";
+import Modal from "../Modal/Modal.js";
+import SearchFilterForm from "../SearchFilterForm/SearchFilterForm";
 import IcnFilter from "../Icons/IcnFilter.js";
 import "./Searchbar.scss";
 
@@ -23,9 +24,7 @@ const Searchbar = () => {
     : "Find a recipe";
 
   //Modal controls
-  const close = () => {
-    setModalOpen(false);
-  };
+  const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
 
   //Serialise parameters
@@ -90,20 +89,21 @@ const Searchbar = () => {
           <IcnFilter />
         </Link>
         {modalOpen && (
-          <Modal
-            modalOpen={modalOpen}
-            handleClose={close}
-            filters={{
-              setFilterIngredient,
-              setFilterCuisine,
-              setFilterDiet,
-              setFilterTime,
-              filterIngredient,
-              filterCuisine,
-              filterDiet,
-              filterTime,
-            }}
-          />
+          <Modal handleClose={close} title={"Filter by"}>
+            <SearchFilterForm
+              onClick={close}
+              filters={{
+                setFilterIngredient,
+                setFilterCuisine,
+                setFilterDiet,
+                setFilterTime,
+                filterIngredient,
+                filterCuisine,
+                filterDiet,
+                filterTime,
+              }}
+            />
+          </Modal>
         )}
         <button className="search__submit" type="submit">
           Search
@@ -116,10 +116,10 @@ const Searchbar = () => {
             className="filter__checkbox"
             type="checkbox"
             name="ingredients"
+            id="ingredients"
             checked={filterIngredient}
             onChange={(e) => {
               setFilterIngredient(e.target.checked);
-              // disableFieldset();
             }}
           ></input>
           <label htmlFor="ingredients">By ingredient</label>
@@ -127,10 +127,13 @@ const Searchbar = () => {
 
         <fieldset className="filter__fieldset" disabled={filterIngredient}>
           <div className="filter__field">
-            <label className="filter__label">Cuisine</label>
+            <label className="filter__label" htmlFor="cuisine">
+              Cuisine
+            </label>
             <select
               className="filter__dropdown"
               name="cuisine"
+              id="cuisine"
               onChange={(e) => {
                 setFilterCuisine(e.target.value);
               }}
@@ -154,6 +157,7 @@ const Searchbar = () => {
             <select
               className="filter__dropdown"
               name="diet"
+              id="diet"
               value={filterDiet}
               onChange={(e) => {
                 setFilterDiet(e.target.value);
@@ -177,6 +181,7 @@ const Searchbar = () => {
             <select
               className="filter__dropdown"
               name="type"
+              id="type"
               value={filterTime}
               onChange={(e) => {
                 setFilterTime(e.target.value);
