@@ -40,9 +40,23 @@
 
 @mixin standard-button {
   border-radius: 0.6rem;
-  border: 1px solid #bdbdbd;
+  border: none;
   background-color: $primary-green;
   color: $primary-white;
+  height: 3.4rem;
+}
+
+@mixin secondary-button {
+  border-radius: 0.6rem;
+  border: 2px solid $primary-black;
+  color: $primary-black;
+  height: 3.4rem;
+}
+
+@mixin tertiary-button {
+  border-radius: 0.6rem;
+  border: none;
+  color: $primary-black;
   height: 3.4rem;
 }
 

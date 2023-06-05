@@ -1,0 +1,122 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/functions" as *;
+@use "../../styles/partials/variables" as *;
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.2rem 0 10.4rem;
+  flex-grow: 1;
+
+  @include tablet {
+    padding: 4rem 0;
+    // height: 100%;
+  }
+
+  &__wrapper {
+    @include responsive-wrapper;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    flex-grow: 1;
+
+    @include tablet {
+      gap: 4rem;
+      flex-grow: unset;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 2.4rem;
+
+    @include tablet {
+      gap: 4rem;
+      flex-grow: unset;
+    }
+  }
+
+  &__title {
+    @include txt-header;
+  }
+
+  &__section-title {
+    @include txt-subheader;
+  }
+
+  &__label {
+    @include txt-label;
+  }
+
+  &__info {
+    @include tablet {
+      width: calc-col-width-tablet(2);
+    }
+
+    @include desktop {
+      width: calc-col-width-desktop(2);
+    }
+  }
+
+  &__info-grp {
+    display: flex;
+    flex-direction: column;
+    gap: $mobile-gutter;
+
+    @include tablet {
+      flex-direction: row;
+      gap: $tablet-gutter;
+    }
+  }
+
+  &__basic-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    background-color: $primary-white;
+    border-radius: 0.6rem;
+    @include global-shadow;
+
+    @include tablet {
+      gap: 2.4rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1.6rem;
+
+    @include tablet {
+      flex-direction: row;
+      gap: $tablet-gutter;
+    }
+
+    &-deactivate {
+      @include tertiary-button;
+      color: $warning-red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      @include tablet {
+        min-width: calc-col-width-tablet(2);
+      }
+
+      @include desktop {
+        min-width: calc-col-width-desktop(2);
+      }
+    }
+
+    &-logout {
+      @extend .profile__actions-deactivate;
+      @include secondary-button;
+    }
+  }
+}

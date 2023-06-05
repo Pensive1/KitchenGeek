@@ -14,6 +14,9 @@ const AuthLogin = ({ setAuthAction }) => {
           <input type="password" name="usrPassword" id="usrPassword" />
         </div>
 
+        {/* Optional: Remember me checkbox */
+        /* Optional: Forgot/reset password */}
+
         <button type="submit">Login</button>
       </form>
 
