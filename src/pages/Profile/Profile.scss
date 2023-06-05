@@ -4,17 +4,6 @@
 @use "../../styles/partials/variables" as *;
 
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3.2rem 0 10.4rem;
-  flex-grow: 1;
-
-  @include tablet {
-    padding: 4rem 0;
-    // height: 100%;
-  }
-
   &__wrapper {
     @include responsive-wrapper;
     display: flex;
@@ -33,6 +22,7 @@
     flex-direction: column;
     flex-grow: 1;
     gap: 2.4rem;
+    align-items: flex-start;
 
     @include tablet {
       gap: 4rem;
@@ -46,6 +36,7 @@
 
   &__section-title {
     @include txt-subheader;
+    color: $primary-blue;
   }
 
   &__label {
@@ -80,10 +71,16 @@
     padding: 1.6rem;
     background-color: $primary-white;
     border-radius: 0.6rem;
+    width: 100%;
     @include global-shadow;
 
     @include tablet {
       gap: 2.4rem;
+      width: calc-col-width-tablet(6);
+    }
+
+    @include desktop {
+      width: calc-col-width-desktop(6);
     }
   }
 

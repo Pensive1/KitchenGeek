@@ -4,7 +4,6 @@ import { getBookmarked } from "../../utils/usrActions";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import EmptyCookbook from "../../components/placeholders/EmptyCookbook";
 import LoadingRecipes from "../../components/placeholders/LoadingRecipes";
-import "./Cookbook.scss";
 
 const Cookbook = () => {
   const [recipes, setRecipes] = useState(null);
@@ -21,7 +20,7 @@ const Cookbook = () => {
   return (
     <>
       <motion.div
-        className="cookbook"
+        className="content__wrapper"
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}

@@ -7,7 +7,6 @@ import {
 } from "../../utils/recipeCalls-paid.mjs";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import SearchBar from "../../components/SearchBar/Searchbar.js";
-import "./SearchResults.scss";
 
 const SearchResults = () => {
   const { searchQuery } = useParams("/:searchQuery");
@@ -49,7 +48,7 @@ const SearchResults = () => {
   }
   return (
     <>
-      <div className="results__wrapper">
+      <div className="content__wrapper">
         <SearchBar />
         {ingredients ? (
           <RecipeList recipes={searchResults} />

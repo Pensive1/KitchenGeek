@@ -5,7 +5,7 @@
 
 .search {
   display: flex;
-  margin: 3.2rem 0;
+  margin-bottom: 3.2rem;
   width: 100%;
   flex-direction: column;
   background-color: $primary-white;
@@ -14,7 +14,7 @@
   @include global-shadow;
 
   @include tablet {
-    margin: 4rem 0;
+    margin-bottom: 4rem;
     flex-wrap: nowrap;
   }
 

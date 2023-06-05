@@ -8,7 +8,7 @@
   justify-content: center;
   width: 100%;
   @include global-shadow;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(5px);
