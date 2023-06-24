@@ -4,7 +4,7 @@ import IcnExplore from "../Icons/IcnExplore";
 import IcnCookBook from "../Icons/IcnCookBook";
 import "./Header.scss";
 
-const Header = ({ isLoginModalActive, setShowLoginModal }) => {
+const Header = ({ isLoginModalActive, setShowLoginModal, isLoggedIn }) => {
   const [isActive, setIsActive] = useState(1);
 
   return (
@@ -35,17 +35,23 @@ const Header = ({ isLoginModalActive, setShowLoginModal }) => {
           </div>
 
           <div className="header__links-secondary">
-            <Link
-              className="header__link"
-              onClick={(e) => {
-                e.preventDefault();
-                isLoginModalActive
-                  ? setShowLoginModal(false)
-                  : setShowLoginModal(true);
-              }}
-            >
-              Log in
-            </Link>
+            {isLoggedIn ? (
+              <Link className="header__link" to={"/profile"}>
+                Profile
+              </Link>
+            ) : (
+              <Link
+                className="header__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  isLoginModalActive
+                    ? setShowLoginModal(false)
+                    : setShowLoginModal(true);
+                }}
+              >
+                Log in
+              </Link>
+            )}
           </div>
         </nav>
       </div>

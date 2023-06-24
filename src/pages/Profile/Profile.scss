@@ -44,23 +44,15 @@
   }
 
   &__info {
-    @include tablet {
-      width: calc-col-width-tablet(2);
-    }
+    &-grp {
+      display: flex;
+      flex-direction: column;
+      gap: $mobile-gutter;
 
-    @include desktop {
-      width: calc-col-width-desktop(2);
-    }
-  }
-
-  &__info-grp {
-    display: flex;
-    flex-direction: column;
-    gap: $mobile-gutter;
-
-    @include tablet {
-      flex-direction: row;
-      gap: $tablet-gutter;
+      @include tablet {
+        // flex-direction: row;
+        gap: $tablet-gutter;
+      }
     }
   }
 

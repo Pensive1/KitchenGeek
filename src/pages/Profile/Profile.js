@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { getProfile } from "../../utils/usrAuth";
 import "./Profile.scss";
+// import { useEffect, useState } from "react";
 
-const Profile = () => {
+const Profile = ({ isLoggedIn, profileData }) => {
+  const navigate = useNavigate();
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+  // const [profile, setProfile] = useState(null);
+
+  // const loadProfile = async () => {
+  //   const profileData = await getProfile();
+  //   setProfile(profileData);
+  // };
+
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     navigate("/");
+  //   }
+  // }, []);
+
   return (
     <main className="content__wrapper">
       <div className="profile__wrapper">
@@ -14,11 +32,23 @@ const Profile = () => {
             <div className="profile__info-grp">
               <div className="profile__info">
                 <p className="profile__label">Name</p>
-                <p className="profile__data">John Doe</p>
+                <p className="profile__data">
+                  {profileData &&
+                    `${profileData.firstname} ${profileData.surname}`}
+                </p>
               </div>
               <div className="profile__info">
                 <p className="profile__label">Email</p>
-                <p className="profile__data">jdoe@mail.com</p>
+                <p className="profile__data">
+                  {profileData && profileData.email}
+                </p>
+              </div>
+              <div className="profile__info">
+                <p className="profile__label">Member since</p>
+                <p className="profile__data">
+                  {profileData &&
+                    new Date(profileData.updated_at).toDateString()}
+                </p>
               </div>
             </div>
           </section>
@@ -26,7 +56,12 @@ const Profile = () => {
 
         <section className="profile__actions">
           <Link className="profile__actions-deactivate">Delete account</Link>
-          <Link className="profile__actions-logout">Logout</Link>
+          <Link
+            to={`${SERVER_URL}/auth/logout`}
+            className="profile__actions-logout"
+          >
+            Logout
+          </Link>
         </section>
       </div>
     </main>

@@ -57,8 +57,8 @@ const IngredientList = ({ ingredients, servings }) => {
             onSubmit={(e) => e.preventDefault()}
             className="recipe__servings"
           >
-            <p className="recipe__label">Serves</p>
             <div className="recipe__serving-details">
+              <p className="recipe__label">Serves</p>
               <div className="recipe__portion-controls">
                 <button
                   className="recipe__portion-btn"

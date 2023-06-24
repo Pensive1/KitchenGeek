@@ -1,6 +1,6 @@
 import axios from "axios";
-const baseURL = "http://localhost:8080/api/user";
-const cookbookUrl = `${baseURL}/123/recipes`;
+const baseURL = "http://localhost:8080/api";
+const cookbookUrl = `${baseURL}/recipes`;
 
 // Check if recipe is bookmarked
 export const checkBookmarks = async (id) => {

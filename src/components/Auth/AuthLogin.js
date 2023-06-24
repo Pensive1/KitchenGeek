@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import BtnGoogle from "./SocialLoginBtns/BtnGoogle";
 
 const AuthLogin = ({ setAuthAction }) => {
   return (
     <>
+      <div className="social-btns">
+        <BtnGoogle />
+      </div>
       <form>
         <div>
           <label htmlFor="usrEmail">Email</label>
