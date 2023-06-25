@@ -1,24 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
-// import { getProfile } from "../../utils/usrAuth";
 import "./Profile.scss";
-// import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Profile = ({ isLoggedIn, profileData }) => {
   const navigate = useNavigate();
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-  // const [profile, setProfile] = useState(null);
-
-  // const loadProfile = async () => {
-  //   const profileData = await getProfile();
-  //   setProfile(profileData);
-  // };
-
-  // useEffect(() => {
-  //   if (!isLoggedIn) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <main className="content__wrapper">
