@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getBookmarked } from "../../utils/usrActions";
+import { loggedInContext } from "../../App";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import EmptyCookbook from "../../components/placeholders/EmptyCookbook";
 import LoadingRecipes from "../../components/placeholders/LoadingRecipes";
 
 const Cookbook = () => {
+  const navigate = useNavigate();
+  const loggedIn = useContext(loggedInContext);
   const [recipes, setRecipes] = useState(null);
 
   const loadCookbook = async () => {
@@ -14,7 +18,11 @@ const Cookbook = () => {
   };
 
   useEffect(() => {
-    loadCookbook();
+    if (!loggedIn) {
+      navigate("/");
+    } else {
+      loadCookbook();
+    }
   }, []);
 
   return (

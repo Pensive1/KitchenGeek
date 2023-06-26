@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { loggedInContext } from "../../App";
 import IcnExplore from "../Icons/IcnExplore";
 import IcnCookBook from "../Icons/IcnCookBook";
 import "./Header.scss";
 
-const Header = ({ isLoginModalActive, setShowLoginModal, isLoggedIn }) => {
+const Header = ({ isLoginModalActive, setShowLoginModal }) => {
   const [isActive, setIsActive] = useState(1);
+  const loggedIn = useContext(loggedInContext);
 
   return (
     <header className="header">
@@ -24,18 +26,20 @@ const Header = ({ isLoginModalActive, setShowLoginModal, isLoggedIn }) => {
               Discover
             </NavLink>
 
-            <NavLink
-              className="header__link"
-              to="/cookbook"
-              onClick={() => setIsActive(2)}
-            >
-              <IcnCookBook isActive={isActive === 2 ? true : false} />
-              My Cookbook
-            </NavLink>
+            {loggedIn && (
+              <NavLink
+                className="header__link"
+                to="/cookbook"
+                onClick={() => setIsActive(2)}
+              >
+                <IcnCookBook isActive={isActive === 2 ? true : false} />
+                My Cookbook
+              </NavLink>
+            )}
           </div>
 
           <div className="header__links-secondary">
-            {isLoggedIn ? (
+            {loggedIn ? (
               <Link className="header__link" to={"/profile"}>
                 Profile
               </Link>

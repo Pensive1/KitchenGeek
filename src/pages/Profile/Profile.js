@@ -1,13 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { loggedInContext } from "../../App";
 import "./Profile.scss";
-import { useEffect } from "react";
 
-const Profile = ({ isLoggedIn, profileData }) => {
+const Profile = ({ profileData }) => {
   const navigate = useNavigate();
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  const loggedIn = useContext(loggedInContext);
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!loggedIn) {
       navigate("/");
     }
   }, []);
