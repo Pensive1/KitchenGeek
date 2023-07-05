@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { loggedInContext } from "../../App";
 import {
   saveRecipe,
   removeRecipe,
@@ -10,6 +11,7 @@ import imgPlaceholder from "../../assets/placeholder/thumbnail_placeholder.svg";
 import "./RecipeThumbnail.scss";
 
 const RecipeThumbnail = ({ recipe }) => {
+  const loggedIn = useContext(loggedInContext);
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const bookmarkCheck = async () => {
@@ -49,7 +51,7 @@ const RecipeThumbnail = ({ recipe }) => {
   };
 
   useEffect(() => {
-    bookmarkCheck();
+    if (loggedIn) bookmarkCheck();
   }, []);
 
   return (
@@ -72,6 +74,7 @@ const RecipeThumbnail = ({ recipe }) => {
           className="recipe-thumb__actions"
           onClick={(e) => {
             e.stopPropagation();
+            //TODO: If logged in, bookmark, else, trigger login popup
             bookmarkRecipe();
           }}
         >

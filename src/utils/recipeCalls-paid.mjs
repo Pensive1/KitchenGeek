@@ -9,7 +9,7 @@ const config = {
 
 // Get random recipes
 export const getRandomRecipes = async () => {
-  const randomRecipeUrl = `${baseURL}/recipes/random?number=16`;
+  const randomRecipeUrl = `${baseURL}/recipes/random?number=1`;
 
   try {
     //return the api call
