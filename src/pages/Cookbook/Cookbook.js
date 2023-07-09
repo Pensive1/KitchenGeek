@@ -21,7 +21,7 @@ const Cookbook = () => {
   return (
     <>
       <motion.div
-        className="cookbook"
+        className="content__wrapper"
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}

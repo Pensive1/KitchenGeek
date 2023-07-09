@@ -7,8 +7,8 @@ const Footer = () => {
       <footer className="footer">
         <main className="footer__wrapper">
           <section className="footer__main-links">
-            <Link>Feedback</Link>
-            <Link>Suggestions</Link>
+            <Link className="footer__link">Feedback</Link>
+            <Link className="footer__link">Suggestions</Link>
           </section>
           <section className="footer__att">
             <p className="footer__footnote">Created by Richard Acquaye</p>
