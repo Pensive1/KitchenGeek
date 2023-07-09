@@ -1,0 +1,33 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/functions" as *;
+@use "../../styles/partials/typography" as *;
+
+.footer {
+  @include section-container;
+  padding-bottom: 7.2rem;
+  background-color: $primary-white;
+
+  &__wrapper {
+    @include responsive-wrapper;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+    gap: 3.2rem;
+    border-top: 1px solid $primary-grey-2;
+  }
+
+  &__main-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__att {
+    font-size: 1.2rem;
+  }
+
+  &__footnote {
+    color: $primary-black;
+  }
+}

@@ -27,6 +27,17 @@
   }
 }
 
+@mixin section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin element-flex {
+  display: flex;
+  justify-content: flex-start;
+}
+
 @mixin global-shadow {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 }
