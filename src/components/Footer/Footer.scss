@@ -8,6 +8,11 @@
   padding-bottom: 7.2rem;
   background-color: $primary-white;
 
+  @include tablet {
+    padding-bottom: unset;
+    background-color: unset;
+  }
+
   &__wrapper {
     @include responsive-wrapper;
     display: flex;
@@ -15,12 +20,34 @@
     padding: 1.6rem;
     gap: 3.2rem;
     border-top: 1px solid $primary-grey-2;
+
+    @include tablet {
+      flex-direction: unset;
+      justify-content: space-between;
+      padding: 2rem;
+      gap: unset;
+    }
   }
 
   &__main-links {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+
+    @include tablet {
+      flex-direction: unset;
+      gap: 2.4rem;
+    }
+  }
+
+  &__link {
+    color: $primary-alt-blue;
+
+    &:active,
+    &:visited,
+    &:focus {
+      color: inherit;
+    }
   }
 
   &__att {
