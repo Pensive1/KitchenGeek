@@ -1,24 +1,27 @@
 # Kitchen Geek
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./src/assets/img/feature-img.png)
 
-Recalculating recipe servings can be time-consuming. A recipe may offer a large serving but you want less. And vice versa.
+It's one thing to find recipes based on taste and diet. It's another to discover the recipe provide more or less portions than intended. In the end, you're left with leftover ingredients and wonder what other dishes can be made with them.
 
-Kitchen Geek helps people discover recipes based on available ingredients, resize servings, and tracks needed ingredients.
+Kitchen Geek helps people discover recipes based on ingredients or additional filters. Adjust serving sizes and bookmark your favourite recipes.
 
 ## Features
 
 #### Search and discover recipes
 
 - Search for recipes by name, ingredient or through custom filters.
-- Disvover recipes through editorial suggestions.
-- Bookmark your favourite recipes in your custom cookbook.
+- Bookmark your favourite recipes in your own custom cookbook.
 
 #### Adjust recipes to your liking
 
-- Eaily recalculate serving sizes with a built-in portion calculator.
+- Easily recalculate serving sizes with the built-in portion calculator.
 - Convert ingredients from imperial (US) to Metric (UK).
 - View ingredients and instructions at a glance _(available on tablet and desktop only)_
+
+#### Responsive experience
+
+- Kitchen Geek is functional on mobile, tablet and desktop.
 
 ## Installation
 
@@ -57,9 +60,9 @@ Without the server, **_this application will not work properly_**.
 
 ## Tech Stack
 
-**Client:** React, JSX, Sass, Javascript
+**Client:** React, Sass, Javascript
 
-**Server:** Node, Express
+**Server:** Node, Express, Knex.js, MySQL, Passport.js
 
 **Packages**
 
@@ -70,21 +73,21 @@ Without the server, **_this application will not work properly_**.
 **Tools**
 
 - Visual Studio Code
-- Postman (Testing API endpoints)
-- Figma (UI Design)
-- Asana (for planning)
+- Postman _(Testing API endpoints)_
+- Figma _(UI Design)_
+- Asana _(for planning)_
 
 ## Roadmap
 
-- 🧑🏽‍🍳 Scrape recipes from third party sites
+- 👤 User accounts and authentication
 
-- ✨ Animate portion updates in the ingredient list
+- 🧑🏽‍🍳 Scrape recipes from third party sites
 
 - ⚡️ Interactive recipe instructions that dim/hide used recipes
 
 - 🛒 Recipe shopping list
 
-- 🥕 Recalculate a recipe portion based on a key ingredi
+- 🥕 Recalculate a recipe portion based on a key ingredient
 
 ---
 
@@ -94,7 +97,7 @@ This project was a great opportunity for me to stretch, hone and develop new ski
 
 ### Learnings
 
-- Discovered Reacts `{children}` prop works similarly to Sass' `@content` [content block](https://sass-lang.com/documentation/at-rules/mixin#content-blocks) feature.
+- Discovered React's `{children}` prop works similarly to Sass' `@content` [content block](https://sass-lang.com/documentation/at-rules/mixin#content-blocks) feature.
 
 - Spent 4 hours creating search parameter function. I later discovered React Router DOM has a built-in `useSearchParams` function that does the same thing.
 
@@ -106,17 +109,26 @@ This project was a great opportunity for me to stretch, hone and develop new ski
 
 ### Challenges
 
+#### Time
+
+I had two weeks to develop this project. In between, students from all courses were involved in a 24hr industry hackathon.
+
+After the deadline, we had three days to apply finishing touches to our projects for demo day.
+
+#### Search results _(with parameters)_
+
 I wasn't sure how to route the search results page to accept parameters after the main search query. After reading the React Router DOM documentation, I learned to use the asterisk (`*`) after `results/` to accept all routes after it.
 
 ## Acknowledgements
 
-- [Spoonacular API](https://spoonacular.com/food-api) (created by [David urbansky](https://github.com/ddsky)) – _Without this API, you wouldn't discover all the recipes you know and love._
+- [Spoonacular API](https://spoonacular.com/food-api) (created by [David Urbansky](https://github.com/ddsky)) – _Without this API, you wouldn't discover all the recipes you know and love._
 
 - [Outfit font](https://fonts.google.com/specimen/Outfit)
 
-- [MingCute Icon Library](https://www.mingcute.com/) – Also available in [Figma](https://www.figma.com/community/file/1021803365995387735).
+- [MingCute Icon Library](https://www.mingcute.com/) – Also available for [Figma](https://www.figma.com/community/file/1021803365995387735).
 
-- [Funny Doodle Pack](https://ui8.net/magika-studio-ae8379/products/funny-doodle-pack) – _Used in error states_
-- My educators [Sammy Abukmeil](https://github.com/SammyAbukmeil) and [Joe Di Trolio](https://github.com/Scribbio) for introducing me to awesome web tech, techniques, best practices, their guidance and fostering a great environment to learn and ask questions over at [BrainStation (London)](https://brainstation.io/london/software-engineering-bootcamp).
+- [Funny Doodle Pack](https://ui8.net/magika-studio-ae8379/products/funny-doodle-pack) – _Used in error and loading states_
+
+- My educators [Sammy Abukmeil](https://github.com/SammyAbukmeil) and [Joe Di Trolio](https://github.com/Scribbio) for introducing me to awesome web technologies, techniques, best practices, their guidance and for fostering a great environment to learn and ask questions over at [BrainStation (London)](https://brainstation.io/london/software-engineering-bootcamp).
 
 - My bootcamp teaching assistant [Adam Benhrima](https://github.com/AdamBenhrima) for showing me different ways to solve code problems, guidance, constructive feedback and inspiring me with his awesome JS [one line solutions](https://betterprogramming.pub/chaining-patterns-in-javascript-df05e3030ee7) during morning challenges.

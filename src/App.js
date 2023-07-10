@@ -8,6 +8,7 @@ import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/shopping" element={<ShoppingList />} />
         </Routes>
       </AnimatePresence>
+      <Footer />
       <NavBar />
     </BrowserRouter>
   );

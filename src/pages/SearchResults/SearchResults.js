@@ -49,7 +49,7 @@ const SearchResults = () => {
   }
   return (
     <>
-      <div className="results__wrapper">
+      <div className="content__wrapper">
         <SearchBar />
         {ingredients ? (
           <RecipeList recipes={searchResults} />
