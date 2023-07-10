@@ -9,12 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include page-content;
-  padding: 3.2rem 0 10.4rem;
-
-  @include tablet {
-    padding: 4rem 0;
-  }
+  padding-top: 7rem;
+  flex-grow: 1;
 }
 
 .--hidden-mobile {

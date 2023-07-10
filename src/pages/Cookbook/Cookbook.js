@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getBookmarked } from "../../utils/usrActions";
 import { loggedInContext } from "../../App";
+import "./Cookbook.scss";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import EmptyCookbook from "../../components/placeholders/EmptyCookbook";
 import LoadingRecipes from "../../components/placeholders/LoadingRecipes";

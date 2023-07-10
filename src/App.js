@@ -10,6 +10,7 @@ import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 import ShoppingList from "./pages/ShoppingList/ShoppingList";
 import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import Modal from "./components/Modal/Modal";
 import Auth from "./components/Auth/Auth";
 import Profile from "./pages/Profile/Profile";
@@ -81,6 +82,7 @@ function App() {
               <Route path="/shopping" element={<ShoppingList />} />
             </Routes>
           </AnimatePresence>
+          <Footer />
           <NavBar />
         </userIdContext.Provider>
       </loggedInContext.Provider>

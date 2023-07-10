@@ -27,12 +27,15 @@
   }
 }
 
-@mixin page-content {
-  margin-top: 7rem;
+@mixin section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  @include tablet {
-    margin-top: 7rem;
-  }
+@mixin element-flex {
+  display: flex;
+  justify-content: flex-start;
 }
 
 @mixin global-shadow {

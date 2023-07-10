@@ -21,7 +21,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+fieldset {
   margin: 0;
 }
 
@@ -49,7 +50,6 @@ img {
 }
 
 fieldset {
-  margin: 0;
   padding: 0;
   border: none;
 }

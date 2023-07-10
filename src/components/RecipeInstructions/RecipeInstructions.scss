@@ -30,6 +30,7 @@
     @include tablet {
       padding: 0;
       height: 90%;
+      gap: 2rem;
     }
   }
 
@@ -37,7 +38,7 @@
     padding: 1.2rem;
     border-radius: 0.6rem;
     counter-increment: step-number;
-    background-color: #ebebeb;
+    background-color: $step-bg;
     display: flex;
     gap: 1.6rem;
     line-height: 2.4rem;
@@ -51,7 +52,9 @@
     min-width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
-    background-color: rgba(53, 78, 102, 0.1);
+    background-color: $primary-white;
     text-align: center;
+    color: $primary-blue;
+    font-weight: 700;
   }
 }
