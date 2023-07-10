@@ -1,17 +1,16 @@
 # Kitchen Geek
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./src/assets/img/feature-img.png)
 
-It's one thing to search for recipes based on taste and diet. It's another to discover the recipe caters for more or less portions than intended. In the end, you're left with leftover ingredients and wonder what else you can make with them.
+It's one thing to find recipes based on taste and diet. It's another to discover the recipe provide more or less portions than intended. In the end, you're left with leftover ingredients and wonder what other dishes can be made with them.
 
-Kitchen Geek helps people discover recipes based on available ingredients or additional filters. Adjust and bookmark your favourite recipes.
+Kitchen Geek helps people discover recipes based on ingredients or additional filters. Adjust serving sizes and bookmark your favourite recipes.
 
 ## Features
 
 #### Search and discover recipes
 
 - Search for recipes by name, ingredient or through custom filters.
-- Discover recipes through editorial suggestions.
 - Bookmark your favourite recipes in your own custom cookbook.
 
 #### Adjust recipes to your liking
@@ -22,7 +21,7 @@ Kitchen Geek helps people discover recipes based on available ingredients or add
 
 #### Responsive experience
 
-Kitchen Geek is functional on mobile, tablet and desktop.
+- Kitchen Geek is functional on mobile, tablet and desktop.
 
 ## Installation
 
@@ -79,6 +78,8 @@ Without the server, **_this application will not work properly_**.
 - Asana _(for planning)_
 
 ## Roadmap
+
+- 👤 User accounts and authentication
 
 - 🧑🏽‍🍳 Scrape recipes from third party sites
 
