@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getRecipeDetails } from "../../utils/recipeCalls-paid.mjs";
+import { getRecipeDetails } from "../../utils/recipeCalls.mjs";
 import { motion } from "framer-motion";
 import {
   saveRecipe,
@@ -99,7 +99,7 @@ const RecipeDetails = () => {
               </div>
             </main>
 
-            {recipeDetails.analyzedInstructions === [] ? (
+            {recipeDetails.analyzedInstructions.length === 0 ? (
               <MissingSteps recipeUrl={recipeDetails.sourceUrl} />
             ) : (
               <Tabs

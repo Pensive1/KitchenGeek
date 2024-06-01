@@ -4,7 +4,7 @@ import {
   searchRecipesByName,
   complexSearch,
   searchRecipesByIngredients,
-} from "../../utils/recipeCalls-paid.mjs";
+} from "../../utils/recipeCalls.mjs";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import SearchBar from "../../components/SearchBar/Searchbar.js";
 import "./SearchResults.scss";
