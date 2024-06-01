@@ -11,7 +11,6 @@ const { cuisines, diets, times } = filterData;
 const Searchbar = () => {
   const navigate = useNavigate();
   const searchForm = useRef(null);
-  const [query, setQuery] = useState(null);
   const [filterIngredient, setFilterIngredient] = useState(false);
   const [filterCuisine, setFilterCuisine] = useState("");
   const [filterDiet, setFilterDiet] = useState("");
@@ -55,15 +54,15 @@ const Searchbar = () => {
 
     // // Ingredient search
     if (
-      Object.entries(searchParamsObj).length > 1 &&
+      Object.entries(searchParamsObj).length === 2 &&
       Object.hasOwn(searchParamsObj, "ingredients")
     ) {
-      navigate(`/results?ingredients=${query}`);
+      navigate(`/results?ingredients=${searchParamsObj.mainQuery}`);
     }
 
     // // Complex search
     if (
-      Object.entries(searchParamsObj).length > 0 &&
+      Object.entries(searchParamsObj).length > 1 &&
       !Object.hasOwn(searchParamsObj, "ingredients")
     ) {
       navigate(`/results?${encodeURI(parseParams(searchParamsObj))}`);
@@ -78,9 +77,6 @@ const Searchbar = () => {
           type="search"
           name="mainQuery"
           placeholder={searchPlaceholder}
-          onChange={(e) => {
-            setQuery(e.target.value);
-          }}
         />
         <Link
           className="search__filter-link"

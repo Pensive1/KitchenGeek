@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import RecipeList from "../../components/RecipeList/RecipeList.js";
 import Searchbar from "../../components/SearchBar/Searchbar.js";
-import { getRandomRecipes } from "../../utils/recipeCalls-paid.mjs";
+import { getRandomRecipes } from "../../utils/recipeCalls.mjs";
+import "../../styles/styles.scss";
 import LoadingRecipes from "../../components/placeholders/LoadingRecipes.js";
 import "../../styles/styles.scss";
 

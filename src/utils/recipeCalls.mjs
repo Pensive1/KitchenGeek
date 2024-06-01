@@ -76,6 +76,20 @@ export const getRecipeDetails = async (id) => {
   }
 };
 
+//Get recipe by any parameter
+export const complexSearch = async (queryParams) => {
+  const recipeCuisineUrl = `${baseURL}/recipes/searchComplex${queryParams}&number=24`;
+
+  try {
+    //return the api call
+    const { data } = await axios.get(recipeCuisineUrl, config);
+    // console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 //Optional: Webscrape ingredients from URL
 export const scrapeRecipeFromUrl = async (recipeSite) => {
   const recipeUrl = `${baseURL}/recipes/extract?url=${recipeSite}&analyze=true&includeNutrition=false&includeTaste=false`;
